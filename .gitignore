@@ -1,0 +1,23 @@
+﻿################################################################################
+# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
+################################################################################
+
+/.vs/TheGreatGame/v16
+/Library
+/Packages
+/obj/Debug
+/Logs
+/Temp
+/TheGreatGame.sln
+/UIRes/TempRes/.vs/TempRes/v16
+/UIRes/TempRes/TempRes.sln
+/UIRes/TempRes/Temp
+/UIRes/TempRes/ProjectSettings
+/UIRes/TempRes/Packages
+/UIRes/TempRes/obj/Debug
+/UIRes/TempRes/Logs
+/UIRes/TempRes/Library
+/UIRes/TempRes/Assembly-CSharp.csproj
+/UIRes/TempRes/Assembly-CSharp-firstpass.csproj
+/UIRes/TempRes/Assembly-CSharp-Editor.csproj
+/UIRes/TempRes/Assembly-CSharp-Editor-firstpass.csproj
