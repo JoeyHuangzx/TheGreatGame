@@ -42,6 +42,7 @@ public static class ExampleGenConfig
                 typeof(SkinnedMeshRenderer),
                 typeof(Renderer),
                 typeof(WWW),
+                typeof(UnityEngine.Networking.UnityWebRequest),
                 typeof(System.Collections.Generic.List<int>),
                 typeof(Action<string>),
                 typeof(UnityEngine.Debug)

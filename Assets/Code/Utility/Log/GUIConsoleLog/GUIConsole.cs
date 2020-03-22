@@ -45,11 +45,8 @@ namespace JoeyGame
         /// 内存监视器
         /// </summary>
         private QMemoryDetector memoryDetector = null;
-#if UNITY_EDITOR
+
         private bool showGUI = true;
-#elif UNITY_ANDROID
-        private bool showGUI = true;
-#endif
 
         public bool ShowGUI
         {

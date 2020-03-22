@@ -30,6 +30,29 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T
         return Instance;
     }
 
+    private void Awake()
+    {
+        if(Instance==null)
+        {
+            Instance = this as T;
+        }
+        DontDestroyOnLoad(gameObject);
+        Init();
+    }
+
+    /// <summary>
+    /// 无实现函数，用于保证MonoSingleton在使用前已创建
+    /// </summary>
+    public void StartUp()
+    {
+        Debug.Log(string.Format("{0} is start up...", gameObject.name));
+    }
+
+    protected virtual void Init()
+    {
+
+    }
+
     protected virtual void OnDestroy()
     {
         Instance = null;

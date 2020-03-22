@@ -33,12 +33,12 @@ public class APP : MonoSingleton<APP>
 
         Instance = this;
         Application.targetFrameRate = 60;
-
+        XLuaManager.GetInstance().StartUp();
     }
 
     void Start()
     {
-        
+        XLuaManager.GetInstance().OnInit();
     }
 
     void Update()

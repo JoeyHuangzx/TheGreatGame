@@ -172,6 +172,30 @@ namespace FileUtility
             return errorStr;
         }
 
+        public static byte[] SafeReadAllBytes(string inFile)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(inFile))
+                {
+                    return null;
+                }
+
+                if (!File.Exists(inFile))
+                {
+                    return null;
+                }
+
+                File.SetAttributes(inFile, FileAttributes.Normal);
+                return File.ReadAllBytes(inFile);
+            }
+            catch (System.Exception ex)
+            {
+
+                return null;
+            }
+        }
+
         /// <summary>
         /// 创建一个文本文件
         /// </summary>
