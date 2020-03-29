@@ -38,7 +38,7 @@ public class APP : MonoSingleton<APP>
 
     void Start()
     {
-        XLuaManager.GetInstance().OnInit();
+        XLuaManager.GetInstance().OnEntry();
     }
 
     void Update()
