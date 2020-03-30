@@ -11,6 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 using XLua;
 using System;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class Injection
@@ -62,7 +63,7 @@ public class LuaBehaviour : MonoBehaviour {
         {
             luaAwake();
         }
-
+        
         int a = 1;
         object o_a = a;
     }
@@ -71,9 +72,9 @@ public class LuaBehaviour : MonoBehaviour {
     {
 
     }
-
+   
 	// Use this for initialization
-	void Start ()
+	private void Start ()
     {
         if (luaStart != null)
         {
@@ -106,5 +107,20 @@ public class LuaBehaviour : MonoBehaviour {
         luaStart = null;
         scriptEnv.Dispose();
         injections = null;
+        
+    }
+
+
+    
+}
+
+[LuaCallCSharp]
+public static class Extension
+{
+
+    public static Button GetButton(this GameObject go)
+    {
+        return go.GetComponent<Button>();
     }
 }
+

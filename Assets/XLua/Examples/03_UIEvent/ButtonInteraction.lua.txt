@@ -5,12 +5,23 @@
 -- Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 function start()
-	print("lua start...")
-	
-	--input ºÍ Tip¶¼ÎªÄãÔÚLuaBehviourÀàÀïinjectionµÄinjection.name
-	self:GetComponent("Button").onClick:AddListener(function()
+	print("lua start..."..btn.name)
+	input:GetComponent("InputField").text="input teset"
+	local go = CS.UnityEngine.GameObject.Find("Button")
+	btn:GetComponent("Button").onClick:AddListener(clickHandle)
+	--this:GetComponent("Button").onClick:AddListener(clickHandle)
+	-- input å’Œ Tipéƒ½ä¸ºä½ åœ¨LuaBehviourç±»é‡Œinjectionçš„injection.name
+	--[[
+	this:GetComponent("Button").onClick:AddListener(function()
 		print("clicked, you input is '" ..input:GetComponent("InputField").text .."'")
-		Tip:GetComponent("InputField").text="test change"
-		print("my self test " ..Tip:GetComponent("InputField").text)
+		tip:GetComponent("InputField").text="test change"
+		print("my self test " ..tip:GetComponent("InputField").text)
 	end)
+	--]]
+end
+
+function clickHandle()
+	print("clicked, you input is '" ..input:GetComponent("InputField").text .."'")
+		tip:GetComponent("InputField").text="test change"
+		print("my self test " ..tip:GetComponent("InputField").text)
 end

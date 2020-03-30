@@ -20,7 +20,7 @@ public class GameManagers : MonoSingleton<GameManagers>
         this.Coin = CPlayerPrefs.GetInt(PrefKeys.TOTAL_COIN, GlobalProperties.DEFAULT_COIN);
         this.Gem = CPlayerPrefs.GetInt(PrefKeys.TOTAL_GEM, GlobalProperties.DEFAULT_GEM);
 
-        LoginManager.GetInstance().Init();
+       // LoginManager.GetInstance().Init();
         
     }
 

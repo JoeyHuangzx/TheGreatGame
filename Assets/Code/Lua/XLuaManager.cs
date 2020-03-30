@@ -1,4 +1,5 @@
 ﻿using FileUtility;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -13,7 +14,8 @@ public class XLuaManager : MonoSingleton<XLuaManager>
     const string luaGameEntryScript = "LuaGameEntry";
 
     private LuaEnv luaEnv = null;
-
+    private LuaTable luaTable = null;
+    private LuaTable meta = null;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +35,8 @@ public class XLuaManager : MonoSingleton<XLuaManager>
         if (luaEnv != null)
         {
             luaEnv.AddLoader(CustomLoader);
+            this.meta = luaEnv.NewTable();
+            meta.Set("__index", luaEnv.Global);
         }
     }
 
@@ -85,13 +89,13 @@ public class XLuaManager : MonoSingleton<XLuaManager>
     /// 加载lua代码块
     /// </summary>
     /// <param name="_luaScript"></param>
-    public void DoString(string _luaScript)
+    public void DoString(string _luaScript,string _chunkName="chunk",LuaTable _luaTable=null)
     {
         if (luaEnv != null)
         {
             try
             {
-                luaEnv.DoString(_luaScript);
+                luaEnv.DoString(_luaScript,_chunkName,_luaTable);
             }
             catch (System.Exception ex)
             {
@@ -99,6 +103,40 @@ public class XLuaManager : MonoSingleton<XLuaManager>
                 Debug.Log(ex.Message);
             }
         }
+    }
+
+    public LuaEnv GetLuaEnv()
+    {
+        return this.luaEnv;
+    }
+
+    public LuaTable InitMonoBehaviour(XLuaMonoBehaviour xLuaMonoBehaviour)
+    {
+        Debug.Log("InitMonoBehaviour");
+        luaTable = luaEnv.NewTable();
+        luaTable.SetMetaTable(meta);
+
+        luaTable.Set("self", xLuaMonoBehaviour);
+        DoString(LoadLuaScript("Common/LuaMonoBehaviour"), "LuaMonoBehaviour", luaTable);
+
+        return luaTable;
+    }
+
+    private string LoadLuaScript(string _filePath)
+    {
+        Debug.Log("LoadLuaScript "+_filePath);
+        string _scriptPath = string.Empty;
+        _filePath = _filePath.Replace(".", "/") + ".lua";
+        _scriptPath = Path.Combine(Application.dataPath, luaScriptsFolder);
+        _scriptPath = Path.Combine(_scriptPath, _filePath);
+        string str = FileManager.GetFileContent(_scriptPath);
+       // Debug.Log("LuaScript " + str);
+        return str;
+    }
+
+    public Action CallFunction(string _targetName, string _function)
+    {
+        return luaTable.Get<Action>(_function);
     }
 
 
