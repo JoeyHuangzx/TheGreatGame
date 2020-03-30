@@ -4,3 +4,4 @@
 --]]
 
 Util=require "Global.Util"
+LuaMonoBehaviour=require "Common.LuaMonoBehaviour"
