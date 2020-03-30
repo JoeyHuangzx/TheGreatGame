@@ -12,7 +12,7 @@ public class Splash : MonoBehaviour
     void Start()
     {
         _text.text = timer.ToString();
-        StartCoroutine(CountDown());    
+        //StartCoroutine(CountDown());    
     }
 
     IEnumerator CountDown()

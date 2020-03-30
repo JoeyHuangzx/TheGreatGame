@@ -39,6 +39,17 @@ public class APP : MonoSingleton<APP>
     void Start()
     {
         XLuaManager.GetInstance().OnEntry();
+
+        GameObject.Find("Canvas/Button").AddComponent<XLuaMonoBehaviour>();
+
+        //GameObject obj = new GameObject("obj11111");
+        //obj.AddComponent<XLuaMonoBehaviour>();
+
+        //GameObject obj2 = new GameObject("obj22222222");
+        //obj2.AddComponent<XLuaMonoBehaviour>();
+
+        //GameObject obj3 = new GameObject("obj3333333333");
+        //obj3.AddComponent<XLuaMonoBehaviour>();
     }
 
     void Update()
