@@ -83,6 +83,7 @@ namespace Utility
         {
             GameObject obj = null;
             Transform[] objChildren = go.GetComponentsInChildren<Transform>(true);
+            
             for (int i = 0; i < objChildren.Length; ++i)
             {
                 if (objChildren[i].name == findName)

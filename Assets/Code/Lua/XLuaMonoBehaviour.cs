@@ -15,12 +15,18 @@ public class XLuaMonoBehaviour : MonoBehaviour
 
     private void Awake()
     {
-        this.luaTable = XLuaManager.GetInstance().InitMonoBehaviour(this);
-        luaAwake = XLuaUtils.CallFunction(gameObject.name, "Awake");
-        luaStart = XLuaUtils.CallFunction(gameObject.name, "Start");
-        luaOnEnable = XLuaUtils.CallFunction(gameObject.name, "OnEnable");
-        luaOnDestroy = XLuaUtils.CallFunction(gameObject.name, "OnDestroy");
+        this.luaTable = XLuaManager.GetInstance().InitMonoBehaviour(this,gameObject);
+        luaAwake = CallLuaFunction("Awake");
+        luaStart = CallLuaFunction("Start");
+        luaUpdate = CallLuaFunction("Update");
+        luaOnEnable = CallLuaFunction("OnEnable");
+        luaOnDestroy = CallLuaFunction("OnDestroy");
         luaAwake?.Invoke();
+    }
+
+    private Action CallLuaFunction(string _fun)
+    {
+        return XLuaManager.GetInstance().CallFunction(gameObject.name, _fun);
     }
 
     private void OnEnable()
@@ -37,7 +43,7 @@ public class XLuaMonoBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        luaUpdate?.Invoke();
     }
 
     private void OnDestroy()

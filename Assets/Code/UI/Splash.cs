@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Utility;
 
 public class Splash : MonoBehaviour
 {
@@ -12,22 +13,13 @@ public class Splash : MonoBehaviour
     void Start()
     {
         _text.text = timer.ToString();
-        //StartCoroutine(CountDown());    
+        StartCoroutine(CountDown());    
     }
 
     IEnumerator CountDown()
     {
         yield return new WaitForSeconds(1.0f);
-        timer--;
-        _text.text = timer.ToString();
-        if (timer <= 0)
-        {
-            GameSceneManager.LoadScene("Login");
-        }
-        else
-        {
-            StartCoroutine(CountDown());
-        }
+        
     }
 
     // Update is called once per frame

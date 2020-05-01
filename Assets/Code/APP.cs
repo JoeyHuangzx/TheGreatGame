@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// 游戏入口
@@ -34,15 +35,16 @@ public class APP : MonoSingleton<APP>
         Instance = this;
         Application.targetFrameRate = 60;
         XLuaManager.GetInstance().StartUp();
+        XLuaManager.GetInstance().OnEntry();
     }
 
     void Start()
     {
-        XLuaManager.GetInstance().OnEntry();
+       
 
-        GameObject.Find("Canvas/Button").AddComponent<XLuaMonoBehaviour>();
 
         //GameObject obj = new GameObject("obj11111");
+        //obj.AddComponent<Button>();
         //obj.AddComponent<XLuaMonoBehaviour>();
 
         //GameObject obj2 = new GameObject("obj22222222");

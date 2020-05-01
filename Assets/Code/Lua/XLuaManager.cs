@@ -17,10 +17,13 @@ public class XLuaManager : MonoSingleton<XLuaManager>
     private LuaTable luaTable = null;
     private LuaTable meta = null;
 
+    private Dictionary<string, string> luaFilePathDict = new Dictionary<string, string>();
+
+
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     protected override void Init()
@@ -38,6 +41,9 @@ public class XLuaManager : MonoSingleton<XLuaManager>
             this.meta = luaEnv.NewTable();
             meta.Set("__index", luaEnv.Global);
         }
+        luaFilePathDict.Add("LobbyPanel", "UI/LobbyPanel");
+        luaFilePathDict.Add("GamePanel", "UI/GamePanel");
+        luaFilePathDict.Add("GameOverPanel", "UI/GameOverPanel");
     }
 
     /// <summary>
@@ -110,18 +116,25 @@ public class XLuaManager : MonoSingleton<XLuaManager>
         return this.luaEnv;
     }
 
-    public LuaTable InitMonoBehaviour(XLuaMonoBehaviour xLuaMonoBehaviour)
+
+    public LuaTable InitMonoBehaviour(XLuaMonoBehaviour xLuaMonoBehaviour,GameObject obj)
     {
         Debug.Log("InitMonoBehaviour");
+        //新建一个表，并设置元表为上面定义的meta
         luaTable = luaEnv.NewTable();
         luaTable.SetMetaTable(meta);
-
+        //把xLuaMonoBehaviour对象传到lua侧
         luaTable.Set("self", xLuaMonoBehaviour);
-        DoString(LoadLuaScript("Common/LuaMonoBehaviour"), "LuaMonoBehaviour", luaTable);
+        DoString(LoadLuaScript(luaFilePathDict[obj.name]), obj.name, luaTable);
 
         return luaTable;
     }
-
+    
+    /// <summary>
+    /// 这里为了方便笔记，所以采用了C# IO来加载lua内容，只针对unity Editor 
+    /// </summary>
+    /// <param name="_filePath"></param>
+    /// <returns></returns>
     private string LoadLuaScript(string _filePath)
     {
         Debug.Log("LoadLuaScript "+_filePath);
@@ -134,6 +147,12 @@ public class XLuaManager : MonoSingleton<XLuaManager>
         return str;
     }
 
+    /// <summary>
+    /// 创建定义从C#到lua间的一个桥接，委托
+    /// </summary>
+    /// <param name="_targetName"></param>
+    /// <param name="_function"></param>
+    /// <returns></returns>
     public Action CallFunction(string _targetName, string _function)
     {
         return luaTable.Get<Action>(_function);

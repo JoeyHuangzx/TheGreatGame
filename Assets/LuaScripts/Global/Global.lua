@@ -4,4 +4,5 @@
 --]]
 
 Util=require "Global.Util"
+UIManager=require "UI.UIManager"
 --LuaMonoBehaviour=require "Common.LuaMonoBehaviour"

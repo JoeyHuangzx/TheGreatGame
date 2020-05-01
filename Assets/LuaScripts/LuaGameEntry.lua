@@ -7,8 +7,7 @@ LuaGameEntry={};
 
 local function EnterGame()
     print('enter game')
-    Util.find()
-    Util.testUtil("dasd","bbbbbbb","ccccc")
+    UIManager.Init()
 end
 
 local function Start()

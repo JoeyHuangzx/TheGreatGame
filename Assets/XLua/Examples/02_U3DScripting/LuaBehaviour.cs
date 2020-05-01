@@ -114,13 +114,5 @@ public class LuaBehaviour : MonoBehaviour {
     
 }
 
-[LuaCallCSharp]
-public static class Extension
-{
 
-    public static Button GetButton(this GameObject go)
-    {
-        return go.GetComponent<Button>();
-    }
-}
 

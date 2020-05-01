@@ -1,12 +1,11 @@
 
 
-
-
 --LuaMonoBehaviour={}
 
 function Awake()
     print("this is Awake function",self.gameObject.name)
-    self.gameObject:GetComponent("Button").onClick:AddListener(clickHandle)
+   -- self.gameObject:GetComponent("Button").onClick:AddListener(clickHandle)
+    -- print(self.gameObject:GetButton())
 end
 
 function clickHandle()
@@ -22,7 +21,7 @@ function Start()
 end
 
 function Update()
-    --print("this is Update function")
+    print("this is Update function")
 end
 
 function OnDestroy()
