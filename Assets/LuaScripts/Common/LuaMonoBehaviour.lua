@@ -4,12 +4,6 @@
 
 function Awake()
     print("this is Awake function",self.gameObject.name)
-   -- self.gameObject:GetComponent("Button").onClick:AddListener(clickHandle)
-    -- print(self.gameObject:GetButton())
-end
-
-function clickHandle()
-	print("button click handle")
 end
 
 function OnEnable()

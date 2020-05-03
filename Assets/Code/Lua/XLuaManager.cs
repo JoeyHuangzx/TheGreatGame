@@ -117,7 +117,7 @@ public class XLuaManager : MonoSingleton<XLuaManager>
     }
 
 
-    public LuaTable InitMonoBehaviour(XLuaMonoBehaviour xLuaMonoBehaviour,GameObject obj)
+    public LuaTable InitMonoBehaviour(XLuaMonoBehaviour xLuaMonoBehaviour,string scriptName)
     {
         Debug.Log("InitMonoBehaviour");
         //新建一个表，并设置元表为上面定义的meta
@@ -125,7 +125,7 @@ public class XLuaManager : MonoSingleton<XLuaManager>
         luaTable.SetMetaTable(meta);
         //把xLuaMonoBehaviour对象传到lua侧
         luaTable.Set("self", xLuaMonoBehaviour);
-        DoString(LoadLuaScript(luaFilePathDict[obj.name]), obj.name, luaTable);
+        DoString(LoadLuaScript(luaFilePathDict[scriptName]), scriptName, luaTable);
 
         return luaTable;
     }

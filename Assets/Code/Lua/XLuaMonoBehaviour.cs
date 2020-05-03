@@ -6,6 +6,7 @@ using XLua;
 
 public class XLuaMonoBehaviour : MonoBehaviour
 {
+    public string scriptName = "";
     private LuaTable luaTable;
     private Action luaAwake;
     private Action luaStart;
@@ -15,7 +16,7 @@ public class XLuaMonoBehaviour : MonoBehaviour
 
     private void Awake()
     {
-        this.luaTable = XLuaManager.GetInstance().InitMonoBehaviour(this,gameObject);
+        this.luaTable = XLuaManager.GetInstance().InitMonoBehaviour(this,scriptName);
         luaAwake = CallLuaFunction("Awake");
         luaStart = CallLuaFunction("Start");
         luaUpdate = CallLuaFunction("Update");

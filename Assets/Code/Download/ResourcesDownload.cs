@@ -10,8 +10,12 @@ public class ResourcesDownload:MonoSingleton<ResourcesDownload>
 
     public string Load(string path)
     {
+            
         TextAsset txt = Resources.Load<TextAsset>(path);
         return txt.text;
+       //Instantiate()
     }
+
+    
 
 }

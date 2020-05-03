@@ -42,6 +42,21 @@ public class XLuaUtils
         }
         return obj;
     }
+
+    public static GameObject GetGameObjectByName(string findName, GameObject parent)
+    {
+        GameObject obj = null;
+        Transform[] objChildren = parent.GetComponentsInChildren<Transform>(true);
+        for (int i = 0; i < objChildren.Length; ++i)
+        {
+            if (objChildren[i].name == findName)
+            {
+                obj = objChildren[i].gameObject;
+                break;
+            }
+        }
+        return obj;
+    }
 }
 
 [LuaCallCSharp]
@@ -50,9 +65,11 @@ public static class Extension
 
     public static Button GetButton(this GameObject go)
     {
-        Debug.Log("call GetButton");
         return go.GetComponent<Button>();
     }
 
-    
+    public static void AddButtonListener(this GameObject go,Action _cb)
+    {
+        go.GetComponent<Button>().onClick.AddListener(()=> { _cb(); });
+    }
 }

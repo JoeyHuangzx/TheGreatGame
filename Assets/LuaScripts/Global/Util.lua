@@ -2,16 +2,36 @@
 
 Util={}
 
+local ball=nil
+local board=nil
+local camera=nil
 
-function Util.find()
-    print('util find')
+local function GetBoard()
+    if board ==nil then
+        board=require "GameLogic.Board"
+    end
+    
+    return board
 end
 
-local function testUtil(arg1, arg2, arg3)
-    print(arg1,arg1,arg3)
+local function GetBall()
+    if ball ==nil then
+        ball=require "GameLogic.Ball"
+    end
+    
+    return ball
 end
 
-Util.testUtil=testUtil
+local function GetCamera()
+    if camera == nil then
+        camera=require "GameLogic.Camera"
+    end
+    return camera
+end
+
+Util.GetBoard=GetBoard
+Util.GetBall=GetBall
+Util.GetCamera=GetCamera
 
 return Util;
 

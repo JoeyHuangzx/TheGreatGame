@@ -13,7 +13,9 @@ public class Splash : MonoBehaviour
     void Start()
     {
         _text.text = timer.ToString();
-        StartCoroutine(CountDown());    
+        StartCoroutine(CountDown());
+        //gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 100);
+       // gameObject.transform.Translate(Vector3.up,)
     }
 
     IEnumerator CountDown()
