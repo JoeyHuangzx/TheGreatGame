@@ -1,5 +1,5 @@
 
-require "Common.Class"
+require "Common.SimpleOOP.Class"
 
 BallClass={
     age=23

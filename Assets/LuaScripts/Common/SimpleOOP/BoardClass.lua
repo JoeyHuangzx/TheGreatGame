@@ -1,4 +1,4 @@
-require "Common.Class"
+require "Common.SimpleOOP.Class"
 
 BoardClass={
     objName="obj"
