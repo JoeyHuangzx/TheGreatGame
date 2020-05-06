@@ -18,23 +18,8 @@ local panelName = 'LobbyPanel'
 local playBtn = nil
 local skinBtn = nil
 local musicBtn = nil
---[[
-    这里的GetGameObjectByName方法是在C#端的一个静态方法，用来获取UI界面上的按钮对象  
-    public static GameObject GetGameObjectByName(string findName, GameObject parent)
-    {
-        GameObject obj = null;
-        Transform[] objChildren = parent.GetComponentsInChildren<Transform>(true);
-        for (int i = 0; i < objChildren.Length; ++i)
-        {
-            if (objChildren[i].name == findName)
-            {
-                obj = objChildren[i].gameObject;
-                break;
-            }
-        }
-        return obj;
-    }
-]]
+
+-- 这里的GetGameObjectByName方法是在C#端的一个静态方法，用来获取UI界面上的按钮对象（ 下面有代码）  
 function Awake()
   
     playBtn = CS.XLuaUtils.GetGameObjectByName('playBtn',self.gameObject)
@@ -51,10 +36,7 @@ function Start()
     AddListener()
 end
 --  侦听按钮事件
--- 这里的也是C# 端的一个侦听方法
---[[
- public static void AddButtonListener(this GameObject go,Action _cb){go.GetComponent<Button>().onClick.AddListener(()=> { _cb(); });}
-]]
+-- 这里的也是C# 端的一个侦听方法（下面有代码）
 function AddListener()
     playBtn:AddButtonListener(PlayClick)
     skinBtn:AddButtonListener(SkinClick)
@@ -83,6 +65,29 @@ function OnDestroy()
 end
                           
 
+```
+
+
+```
+ public static GameObject GetGameObjectByName(string findName, GameObject parent)
+    {
+        GameObject obj = null;
+        Transform[] objChildren = parent.GetComponentsInChildren<Transform>(true);
+        for (int i = 0; i < objChildren.Length; ++i)
+        {
+            if (objChildren[i].name == findName)
+            {
+                obj = objChildren[i].gameObject;
+                break;
+            }
+        }
+        return obj;
+    }
+
+    public static void AddButtonListener(this GameObject go,Action _cb)
+    {
+        go.GetComponent<Button>().onClick.AddListener(()=> { _cb(); });
+    }
 ```
 
 接下来是怎么在unity端调用这个脚本的问题，我的上一个博客有说到一个XLuaMonoBehaviour.cs类，我们把这个脚本挂在我们在Unity的LobbyPanel对象上，然后在scriptName变量上写上Lua脚本的名字，这样我们的LobbyPanel lua类就做成了。
