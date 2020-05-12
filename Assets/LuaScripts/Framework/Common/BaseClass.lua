@@ -23,9 +23,11 @@ function BaseClass(_className,_base)
             local create
             create=function(_class,...)
                 if _class.base then
+                    print('call create base。。。')
                     create(_class.base,...)
                 end
                 if _class.constructor then
+                    print('call constructor');
                     _class.constructor(classObj,...)
                 end
             end
@@ -49,6 +51,7 @@ function BaseClass(_className,_base)
     if _base then
         setmetatable(classTable,{
             __index=function(_talbe,_key)
+                print('所以基类成员的元表')
                 return Class[_base][_key]
             end
         })
