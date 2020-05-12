@@ -21,3 +21,5 @@
 /UIRes/TempRes/Assembly-CSharp-firstpass.csproj
 /UIRes/TempRes/Assembly-CSharp-Editor.csproj
 /UIRes/TempRes/Assembly-CSharp-Editor-firstpass.csproj
+/.vs
+/obj/Release

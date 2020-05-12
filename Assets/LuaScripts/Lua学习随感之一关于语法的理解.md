@@ -14,6 +14,61 @@ LUA：一切皆table
 
 ### lua文件之间的相互调用
 
+#### 写法一
+```
+--文件 A.lua
+
+A={}
+
+function A:A_Init()
+end
+```
+
+```
+-- 文件B.lua
+
+B={}
+function B:B_Init()
+end
+```
+例如A中想调用B，则在ALua文件中
+```
+--文件 A.lua
+A={}
+-- 这里如果B在其他文件夹，则要加上文件夹名，如B在Common文件夹下，则是 require 'Common.B'
+local b=require 'B'
+function A:A_Init()
+    b:B_Init()
+end
+```
+#### 写法二
+```
+--文件 A.lua
+
+A={}
+
+local function A_Init()
+end
+
+A.A_Init=A_Init
+
+return A
+```
+接下来我们在B中调用ALua文件
+```
+-- 文件B.lua
+
+B={}
+local a=require 'A'
+local function B_Init()
+    a:A_Init()
+end
+
+B.B_Init=B_Init
+
+return B
+```
+#### 两个方法的区别其实就是，一个是全局方法，一个是局部方法，第二个方法是局部方法通过赋值给一个全局变量来供外部调用
 
 ### 元表的查找步骤
 - 步骤1、在表中查找，如果找到，返回该元素，找不到则继续步骤2
@@ -22,6 +77,5 @@ LUA：一切皆table
 
 ## 高级用法
 
-### 模块化的问题
 
 ### 面向对象

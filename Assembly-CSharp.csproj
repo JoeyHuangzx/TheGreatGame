@@ -94,6 +94,7 @@
     <Compile Include="Assets\Code\Guide\MaskFocus.cs" />
     <Compile Include="Assets\Code\Lua\XLuaManager.cs" />
     <Compile Include="Assets\Code\Lua\XLuaMonoBehaviour.cs" />
+    <Compile Include="Assets\Code\Lua\XLuaUpdate.cs" />
     <Compile Include="Assets\Code\Lua\XLuaUtils.cs" />
     <Compile Include="Assets\Code\Managers\GameManagers.cs" />
     <Compile Include="Assets\Code\Managers\LoginManager.cs" />

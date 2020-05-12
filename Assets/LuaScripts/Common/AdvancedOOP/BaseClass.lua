@@ -49,7 +49,7 @@ end
 
 --- 创建对象
 ---@param clz table 对象所属的类，可以是类型的table也可以是类型的名字
----@param ... 要传递给构造函数的参数列表
+-- @param ...要传递给构造函数的参数列表
 function New(clz, ...)
     if type(clz) == 'string' then
         clz = _ClzTbl[clz]
