@@ -13,7 +13,7 @@ public class XLuaUpdate : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        
+            
     }
 
     public void FixedUpdate()

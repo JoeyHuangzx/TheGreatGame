@@ -3,6 +3,8 @@
 
 --]]
 
+require "Framework.Common.BaseClass"
+
 Util=require "Global.Util"
 ResourcesManager=require "Framework.Common.ResourcesManager"
 UIManager=require "UI.UIManager"

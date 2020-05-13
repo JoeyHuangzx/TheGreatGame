@@ -7,12 +7,14 @@ local Class={}
 ]]
 function BaseClass(_className,_base)
     local _class={}
+    print('BaseClass...'.._className)
     _class.className=_className;
     _class.base=_base;
     -- 创建对象
     -- @param ...要传递给构造函数的参数列表
     _class.New=function(...)
         local classObj={}
+        print('new class obj...')
         setmetatable(classObj,{
             __index=Class[_class],
         })
@@ -21,14 +23,14 @@ function BaseClass(_className,_base)
         -- 先调用基类的构造函数，再调用自己的
         do
             local create
-            create=function(_class,...)
-                if _class.base then
+            create=function(_c,...)
+                if _c.base then
                     print('call create base。。。')
-                    create(_class.base,...)
+                    create(_c.base,...)
                 end
-                if _class.constructor then
+                if _c.constructor then
                     print('call constructor');
-                    _class.constructor(classObj,...)
+                    _c.constructor(classObj,...)
                 end
             end
             create(_class,...)
@@ -42,7 +44,8 @@ function BaseClass(_className,_base)
 
     -- 设置类的元表
     setmetatable(_class,{
-        __newIndex=function(_table,_key,_value)
+        __newindex =function(_table,_key,_value)
+           -- print('设置__index'..',_key:'.._key..',value:'.._value);
             classTable[_key]=_value
         end,
         __index=classTable
@@ -51,7 +54,7 @@ function BaseClass(_className,_base)
     if _base then
         setmetatable(classTable,{
             __index=function(_talbe,_key)
-                print('所以基类成员的元表')
+                print('索引基类成员的元表,'..'key:')
                 return Class[_base][_key]
             end
         })
