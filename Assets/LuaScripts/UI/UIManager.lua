@@ -8,7 +8,7 @@ local currWindow=nil
 local uiCanvas=nil
 
 local function Init()
-    print('UIManager Init...')
+  --  print('UIManager Init...')
     uiCanvas=GameObject.Find("Canvas")
     local obj=CreatePanel("LobbyPanel")
     windows["LobbyPanel"]=obj

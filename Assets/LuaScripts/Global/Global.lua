@@ -4,6 +4,7 @@
 --]]
 
 require "Framework.Common.BaseClass"
+BaseComponent=require "Common.SimpleOOP.BaseComponent"
 
 Util=require "Global.Util"
 ResourcesManager=require "Framework.Common.ResourcesManager"

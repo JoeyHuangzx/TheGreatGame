@@ -119,7 +119,7 @@ public class XLuaManager : MonoSingleton<XLuaManager>
 
     public LuaTable InitMonoBehaviour(XLuaMonoBehaviour xLuaMonoBehaviour,string scriptName)
     {
-        Debug.Log("InitMonoBehaviour");
+      //      Debug.Log("InitMonoBehaviour");
         //新建一个表，并设置元表为上面定义的meta
         luaTable = luaEnv.NewTable();
         luaTable.SetMetaTable(meta);
@@ -137,7 +137,7 @@ public class XLuaManager : MonoSingleton<XLuaManager>
     /// <returns></returns>
     private string LoadLuaScript(string _filePath)
     {
-        Debug.Log("LoadLuaScript "+_filePath);
+        //Debug.Log("LoadLuaScript "+_filePath);
         string _scriptPath = string.Empty;
         _filePath = _filePath.Replace(".", "/") + ".lua";
         _scriptPath = Path.Combine(Application.dataPath, luaScriptsFolder);
