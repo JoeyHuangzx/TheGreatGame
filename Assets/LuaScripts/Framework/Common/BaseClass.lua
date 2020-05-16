@@ -65,7 +65,7 @@ function BaseClass(_className, _base)
             classTable,
             {
                 __index = function(_talbe, _key)
-                    print('索引基类成员的元表,table:',_talbe,'key:',key)
+                    print('索引基类成员的元表,table:',_talbe,'key:',_key)
                     return Class[_base][_key]
                 end
             }

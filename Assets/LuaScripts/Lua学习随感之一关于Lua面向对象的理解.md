@@ -24,6 +24,7 @@ lua 中的 function 可以用来表示方法。那么LUA中的类可以通过 ta
 
 ### 面向对象代码及其用法
 **类代码**
+*声明：这个类是来自于[一个超好的unity Lua框架](https://blog.csdn.net/u013108312/category_6462401.html)博客的源码，我在他的基础上加了一些解析*
 ```
 local Class = {}
 
