@@ -1,20 +1,22 @@
 
 LuaUpdate=BaseClass("LuaUpdate")
 
-local function Update()
-    
+function LuaUpdate:Start()
+    print('luaupdate start...')
 end
 
-local function FixedUpdate(self,deltaTime)
-    print('fixedUpdate',self,deltaTime)
+function Update()
+   -- print('Update',Update)
 end
 
-local function LateUpdate()
-    print('Lateupdate...')
+function FixedUpdate(deltaTime)
+   -- print('fixedUpdate',deltaTime)
 end
 
-LuaUpdate.Update=Update;
-LuaUpdate.FixedUpdate=FixedUpdate;
-LuaUpdate.LateUpdate=LateUpdate;
+function LateUpdate()
+   -- print('Lateupdate...')
+end
+
+LuaUpdate.Update=Update
 
 return LuaUpdate

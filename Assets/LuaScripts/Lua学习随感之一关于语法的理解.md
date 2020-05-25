@@ -79,3 +79,8 @@ return B
 
 
 ### 面向对象
+
+local obj = require 'xxx'
+-- 这里的对象b如果直接调用self.base并不能获取到基类，只有用上面的obj.base才可以。
+-- 解决方法，在构造函数里把obj.base赋值给b这里。也就是self.base=xxx.base
+local b = ball.New('BallObj')

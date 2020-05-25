@@ -1,12 +1,19 @@
 
-local Ball=BaseClass('Ball', BaseComponent)
+local Ball=BaseClass('Ball', LuaUpdate)
+--local base=LuaUpdate
 
 function Ball:constructor(params)
+    self.base=Ball.base;
     print('Ball Constructor')
 end
 
 function Ball:Start( ... )
-    print('Ball Start fun...')
+    self.base:Start()
+    print('Ball Start fun...',self)
+end
+
+function Ball:Update()
+  
 end
 
 function Ball:Jump()

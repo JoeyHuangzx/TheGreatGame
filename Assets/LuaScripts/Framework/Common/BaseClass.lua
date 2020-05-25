@@ -6,14 +6,14 @@ local Class = {}
 ]]
 function BaseClass(_className, _base)
     local _class = {}
-    print('新建类BaseClass，类名' .. _className)
+    Print_log('新建类BaseClass，类名' .. _className)
     _class.className = _className
     _class.base = _base
     -- 创建对象
     -- @param ...要传递给构造函数的参数列表
     _class.New = function(...)
         local classObj = {}
-        print('新建类对象...',_className)
+        Print_log('新建类对象...',_className)
         setmetatable(
             classObj,
             {
@@ -26,19 +26,19 @@ function BaseClass(_className, _base)
         do
             local create
             create = function(_c, ...)
-                print('call create。。。')
+                Print_log('call create。。。')
                 if _c.base then
-                    print('调用基类构造函数call create base。。。')
+                    Print_log('调用基类构造函数call create base。。。')
                     create(_c.base, ...)
                 end
                 if _c.constructor then
-                    print('调用构造函数call constructor')
+                    Print_log('调用构造函数call constructor')
                     _c.constructor(classObj, ...)
                 end
             end
             create(_class, ...)
         end
-
+        classObj.base=_base
         return classObj
     end
 
@@ -52,7 +52,7 @@ function BaseClass(_className, _base)
             -- 这里设置的类的成员变量和方法，因为Lua会把类的变量名和变量的值看成是key和value，
             -- 同样的方法名和方法内容也是key和value
             __newindex = function(_table, _key, _value)
-                print('设置__newindex',',_key:', _key,',value:',_value)
+                Print_log('设置__newindex',',_key:', _key,',value:',_value)
                 classTable[_key] = _value
             end,
             __index = classTable
@@ -65,11 +65,15 @@ function BaseClass(_className, _base)
             classTable,
             {
                 __index = function(_talbe, _key)
-                    print('索引基类成员的元表,table:',_talbe,'key:',_key)
+                    Print_log('索引基类成员的元表,table:',_talbe,'key:',_key)
                     return Class[_base][_key]
                 end
             }
         )
     end
     return _class
+end
+
+function Print_log(...)
+    print(...)
 end

@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using XLua;
 
+[CSharpCallLua]
 public class LuaUpdate : MonoBehaviour
 {
+    private Action update;
     private Action<float> fixedUpdate;
     private Action lateUpdate;
 
@@ -17,6 +19,7 @@ public class LuaUpdate : MonoBehaviour
 
     public void AddUpdate(LuaEnv luaEnv)
     {
+        update = luaEnv.Global.Get<Action>("Update");
         fixedUpdate= luaEnv.Global.Get<Action<float>>("FixedUpdate");
         lateUpdate=luaEnv.Global.Get<Action>("LateUpdate");
     }
@@ -24,7 +27,7 @@ public class LuaUpdate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        update?.Invoke();
     }
 
     private void FixedUpdate()
@@ -36,4 +39,27 @@ public class LuaUpdate : MonoBehaviour
     {
         lateUpdate?.Invoke();
     }
+
+    public void OnDispose()
+    {
+        update = null;
+        lateUpdate = null;
+        fixedUpdate = null;
+    }
+
+    void OnDestroy()
+    {
+        OnDispose();
+    }
+}
+
+public static class LuaUpdaterExporter
+{
+    [CSharpCallLua]
+    public static List<Type> CSharpCallLua = new List<Type>()
+    {
+        typeof(Action),
+        typeof(Action<float>),
+        typeof(Action<float, float>),
+    };
 }

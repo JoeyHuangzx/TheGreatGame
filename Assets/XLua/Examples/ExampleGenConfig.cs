@@ -45,6 +45,7 @@ public static class ExampleGenConfig
                 typeof(UnityEngine.Networking.UnityWebRequest),
                 typeof(System.Collections.Generic.List<int>),
                 typeof(Action<string>),
+                typeof(Action<float>),
                 typeof(UnityEngine.Debug)
             };
 

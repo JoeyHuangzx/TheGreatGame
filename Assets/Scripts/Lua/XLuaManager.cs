@@ -30,6 +30,7 @@ public class XLuaManager : MonoSingleton<XLuaManager>
     {
         base.Init();
         InitLuaEnv();
+        OnEntry();
     }
 
     private void InitLuaEnv()
@@ -138,7 +139,7 @@ public class XLuaManager : MonoSingleton<XLuaManager>
     /// <returns></returns>
     private string LoadLuaScript(string _filePath)
     {
-        //Debug.Log("LoadLuaScript "+_filePath);
+        Debug.Log("LoadLuaScript "+_filePath);
         string _scriptPath = string.Empty;
         _filePath = _filePath.Replace(".", "/") + ".lua";
         _scriptPath = Path.Combine(Application.dataPath, luaScriptsFolder);
