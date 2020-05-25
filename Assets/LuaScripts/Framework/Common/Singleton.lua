@@ -1,6 +1,6 @@
 
 local Singleton = BaseClass("Singleton")
-Singleton.instance=nil
+--Singleton.instance=nil
 
 function Singleton:GetInstance()
     -- rawget(tb, i)就是对table tb进行了一次“原始的（raw）”访问，也就是一次不考虑元表的简单访问

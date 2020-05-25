@@ -10,8 +10,8 @@ local function EnterGame()
     local Ball=require "Common.SimpleOOP.Ball"
     local b=Ball.New()
     b:Start()
-    ----EventMessager:GetInstance():AddListener('click',Handle)
-   -- EventMessager:GetInstance():DispatchEvent('click','sdfsa',LuaGameEntry,'2434')
+    EventMessager:GetInstance():AddListener('click',Handle)
+    EventMessager:GetInstance():DispatchEvent('click','sdfsa',LuaGameEntry,'2434')
   
 end
 

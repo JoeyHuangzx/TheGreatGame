@@ -1,32 +1,49 @@
-
-LuaUpdate=BaseClass("LuaUpdate")
-LuaUpdate.objUpdate=nil
+LuaUpdate = BaseClass('LuaUpdate')
+LuaUpdate.fixedDeltaTime = 0
+LuaUpdate.UpdateHandler = nil
+LuaUpdate.FixedUpdateHandler = nil
+LuaUpdate.LateUpdateHandler = nil
 
 function LuaUpdate:EnableUpdate(_enable)
-   print(self)
-   print(self.Update)
-   LuaUpdate.objUpdate=self.Update
+    if _enable == true then
+        print('start update')
+        LuaUpdate.UpdateHandler = self.Update or nil
+        LuaUpdate.LateUpdateHandler = self.LateUpdate or nil
+        LuaUpdate.FixedUpdateHandler = self.FixedUpdate or nil
+    end
 end
 
 function LuaUpdate:Start()
-    print('luaupdate start...')
+    --  print('luaupdate start...')
 end
 
 function Update()
-   -- print('Update',Update)
-   if LuaUpdate.objUpdate~=nil then
-      LuaUpdate.objUpdate()
-   end
+    -- print('Update',Update)
+    if LuaUpdate.UpdateHandler ~= nil then
+        LuaUpdate:UpdateHandler()
+    end
 end
 
 function FixedUpdate(deltaTime)
-   -- print('fixedUpdate',deltaTime)
+    LuaUpdate.fixedDeltaTime = deltaTime
+    if LuaUpdate.FixedUpdateHandler ~= nil then
+        LuaUpdate:FixedUpdateHandler()
+    end
+    -- print('fixedUpdate',deltaTime)
 end
 
 function LateUpdate()
-   -- print('Lateupdate...')
+    if LuaUpdate.LateUpdateHandler then
+        LuaUpdate:LateUpdateHandler()
+    end
+    -- print('Lateupdate...')
 end
 
-LuaUpdate.Update=Update
+function LuaUpdate:RemoveEnable()
+    print('remove update')
+    LuaUpdate.UpdateHandler = nil
+    LuaUpdate.LateUpdateHandler = nil
+    LuaUpdate.FixedUpdateHandler = nil
+end
 
 return LuaUpdate
