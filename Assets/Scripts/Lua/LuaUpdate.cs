@@ -17,8 +17,8 @@ public class LuaUpdate : MonoBehaviour
 
     public void AddUpdate(LuaEnv luaEnv)
     {
-        luaEnv.Global.Get<Action>("FixedUpdate");
-        luaEnv.Global.Get<Action<float>>("LateUpdate");
+        fixedUpdate= luaEnv.Global.Get<Action<float>>("FixedUpdate");
+        lateUpdate=luaEnv.Global.Get<Action>("LateUpdate");
     }
 
     // Update is called once per frame

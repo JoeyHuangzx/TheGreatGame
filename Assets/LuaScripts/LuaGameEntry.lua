@@ -46,14 +46,14 @@ local function EnterGame()
 
     --[[     local base=BaseComponent.New('JoeyBaseComponent')
     base:Enable('ddd')
- ]]
+
     local ball = require 'Common.SimpleOOP.Ball'
     local b = ball.New('BallObj')
     b:Awake()
     b:Enable()
     b:Jump()
     b:Move()
-    b:Start()
+    b:Start() ]]
 end
 
 local function Start()

@@ -5,6 +5,7 @@
 
 require "Framework.Common.BaseClass"
 BaseComponent=require "Common.SimpleOOP.BaseComponent"
+LuaUpdate=require "Framework.Common.LuaUpdate"
 
 Util=require "Global.Util"
 ResourcesManager=require "Framework.Common.ResourcesManager"

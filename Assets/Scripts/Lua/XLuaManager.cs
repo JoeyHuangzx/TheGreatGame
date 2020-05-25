@@ -77,6 +77,7 @@ public class XLuaManager : MonoSingleton<XLuaManager>
         {
             loadScript(luaGameEntryScript);
             DoString("LuaGameEntry.Start()");
+            gameObject.GetComponent<LuaUpdate>().AddUpdate(luaEnv);
         }
     }
 

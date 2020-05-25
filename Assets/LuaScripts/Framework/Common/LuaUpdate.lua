@@ -1,5 +1,5 @@
 
-LuaUpdate={}
+LuaUpdate=BaseClass("LuaUpdate")
 
 local function Update()
     
@@ -9,7 +9,7 @@ local function FixedUpdate(self,deltaTime)
     print('fixedUpdate',self,deltaTime)
 end
 
-local function LateUpdate(
+local function LateUpdate()
     print('Lateupdate...')
 end
 
