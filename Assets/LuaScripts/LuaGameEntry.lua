@@ -7,20 +7,9 @@ local function EnterGame()
     print('enter game')
     UIManager.Init()
 
-    --[[     local base=BaseComponent.New('JoeyBaseComponent')
-    base:Enable('ddd')
-
-    local ball = require 'Common.SimpleOOP.Ball'
-    local b = ball.New('BallObj')
-    b:Awake()
-    b:Enable()
-    b:Jump()
-    b:Move()
-    b:Start() ]]
-    local ball = require 'Common.SimpleOOP.Ball'
-    
-    local b = ball.New('BallObj')
-    b:Start()
+    EventMessager:GetInstance():AddListener()
+    EventMessager:GetInstance():DispatchEvent()
+    EventMessager:GetInstance():RemoveListener()
 end
 
 local function Start()

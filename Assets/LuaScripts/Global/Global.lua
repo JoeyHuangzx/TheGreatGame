@@ -6,6 +6,8 @@
 require "Framework.Common.BaseClass"
 BaseComponent=require "Common.SimpleOOP.BaseComponent"
 LuaUpdate=require "Framework.Common.LuaUpdate"
+Singleton=require "Framework.Common.Singleton"
+EventMessager=require "Framework.Common.EventMessager"
 
 Util=require "Global.Util"
 ResourcesManager=require "Framework.Common.ResourcesManager"
