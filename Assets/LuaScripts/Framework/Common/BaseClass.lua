@@ -75,5 +75,5 @@ function BaseClass(_className, _base)
 end
 
 function Print_log(...)
-    print(...)
+   -- print(...)
 end

@@ -10,10 +10,11 @@ end
 function Ball:Start( ... )
     self.base:Start()
     print('Ball Start fun...',self)
+    self:EnableUpdate(false)
 end
 
 function Ball:Update()
-  
+  print('ball update')
 end
 
 function Ball:Jump()
