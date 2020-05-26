@@ -1,35 +1,52 @@
+local Ball = BaseClass('Ball', LuaUpdate)
+Ball.timer = 0
+Ball.isUpdate = false
 
-Ball={}
-
-Ball.Obj=nil
-local Dir=nil
-
-local function Init()
-    print('Ball init')
-    Ball.Obj=CS.XLuaUtils.GetGameObjectByName("ball")
-    Dir=Vector3(1,0,0)
-    --print(Ball.Obj)
+function Ball:constructor(params)
+    self.base = Ball.base
+    print('Ball Constructor')
 end
 
-local function Start()
-    print('ball Start')
+function Ball:Start()
+    self.base:Start()
+    --self:Start()
+    print('Ball Start fun...', self)
+    self:EnableUpdate(true)
+    Ball.isUpdate = true
 end
 
-local function Update()
-    if Ball.Obj.transform.position.x >3 then
-        Dir.x=-1
+function Ball:Update()
+    if Ball.isUpdate then
+        print('ball update')
+        -- Ball.timer+=self.fixedDeltaTime
+
+        if Ball.timer > 10 then
+            self:RemoveEnable()
+        else
+            Ball.timer = Ball.timer + self.fixedDeltaTime
+           -- print('timer:',Ball.timer)
+        end
     end
-    if(Ball.Obj.transform.position.x<-3) then
-        Dir.x=1
-    end
- --   obj.transform:Translate(dir/30)
-
 end
 
---Ball.Obj=Obj;
-Ball.Dir=Dir;
-Ball.Init=Init
-Ball.Start=Start
-Ball.Update=Update
+function Ball:LateUpdate()
+    print('ball lateupdate ')
+end
+
+function Ball:FixedUpdate()
+    print('ball fixedupdate')
+end
+
+function Ball:Jump()
+    print('ball Jump', self)
+end
+
+function Ball:Move(params)
+    print('ball move', self)
+end
+
+--Ball.constructor=constructor
+--Ball.Jump=Jump
+--Ball.Move=Move
 
 return Ball

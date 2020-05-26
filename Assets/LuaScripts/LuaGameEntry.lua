@@ -1,5 +1,4 @@
 require 'Global.Global'
-print('requre global')
 -- 定义为全局模块，整个lua程序的入口类
 
 LuaGameEntry = {}
@@ -7,9 +6,7 @@ local function EnterGame()
     print('enter game')
     UIManager.Init()
 
-    local Ball=require "Common.SimpleOOP.Ball"
-    local b=Ball.New()
-    b:Start()
+   
     EventMessager:GetInstance():AddListener('click',Handle)
     EventMessager:GetInstance():DispatchEvent('click','sdfsa',LuaGameEntry,'2434')
   

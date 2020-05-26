@@ -31,12 +31,12 @@ end
 
 function Start()
     -- print(panelName, '  this is Start function')
-    if board ~= nil then
+  --[[   if board ~= nil then
         board.Start()
     end
     if ball ~= nil then
         ball.Start()
-    end
+    end ]]
     pauseBtn:AddButtonListener(PauseHandle)
     homeBtn:AddButtonListener(HomeHandle)
     resetBtn:AddButtonListener(ResetHandle)
@@ -46,13 +46,13 @@ function Start()
 end
 
 function InitGame(arg1, arg2, arg3)
-    board = Util.GetBoard()
+    --[[ board = Util.GetBoard()
     ball = Util.GetBall()
     camera = Util.GetCamera()
     --print(camera)
     board.Init()
     ball.Init()
-    camera.Init()
+    camera.Init() ]]
 end
 
 function CreateBoard()
@@ -90,13 +90,13 @@ end
 function Update()
     -- print("this is Update function")
     if board ~= nil then
-        board.Update()
+      --  board.Update()
     end
     if ball ~= nil then
-        ball.Update()
+     --   ball.Update()
     end
     if camera ~= nil then
-        camera.Update()
+     --   camera.Update()
     end
 end
 

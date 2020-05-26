@@ -8,9 +8,9 @@ local pos=nil
 
 local function Init()
     Camera.Obj=GameObject.Find("UICamera");
-    pos=Camera.Obj.transform.position
+   --[[  pos=Camera.Obj.transform.position
     ballObj=Ball.Obj
-    Offset=pos-ballObj.transform.position
+    Offset=pos-ballObj.transform.position ]]
 end
 
 local function Update()

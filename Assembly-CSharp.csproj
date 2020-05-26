@@ -158,7 +158,6 @@
     <Compile Include="Assets\Scripts\Lua\LuaUpdate.cs" />
     <Compile Include="Assets\Scripts\Lua\XLuaManager.cs" />
     <Compile Include="Assets\Scripts\Lua\XLuaMonoBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Lua\XLuaUpdate.cs" />
     <Compile Include="Assets\Scripts\Lua\XLuaUtils.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManagers.cs" />
     <Compile Include="Assets\Scripts\Managers\LoginManager.cs" />
