@@ -1,52 +1,50 @@
-UIManager = {}
+UIManager = BaseClass('UIManager',Singleton)
+UIManager.name = 'UIManager'
 
-local name = 'UIManager'
+UIManager.windows = {}
+UIManager.currWindow = nil
 
-local windows = {}
-local currWindow = nil
+UIManager.uiCanvas = nil
 
-local uiCanvas = nil
 
-local function Init()
-    --  print('UIManager Init...')
-    uiCanvas = GameObject.Find('Canvas')
+function UIManager:Init()
+    print('UIManager Init...',self)
+    UIManager.uiCanvas = GameObject.Find('Canvas')
     local panel = require 'UI.LobbyPanel'
     panel.New('i am lobby panel')
-    local obj = CreatePanel('LobbyPanel')
+    local obj = self:CreatePanel('LobbyPanel')
     panel:OnCreate(obj)
-    windows["LobbyPanel"]=obj
-    currWindow=obj
+    UIManager.windows["LobbyPanel"]=obj
+    UIManager.currWindow=obj
 end
 
-local function OpenPanel(panelName)
-    local target = windows[panelName]
-    currWindow:SetActive(false)
+function UIManager:OpenPanel(panelName)
+    local target = UIManager.windows[panelName]
+    UIManager.currWindow:SetActive(false)
     if target == nil then
-        target = CreatePanel(panelName)
+        target = self:CreatePanel(panelName)
     end
-    currWindow = target
+    UIManager.currWindow = target
     target:SetActive(true)
 end
 
-function CreatePanel(panelName)
+function UIManager:CreatePanel(panelName)
     -- local panel = CS.XLuaUtils.GetGameObjectByName(panelName)
+    print('create panel name:',panelName)
     local prefab = ResourcesManager.Load(panelName) --CS.UnityEngine.Resources.Load("GameOverPanel")
-    local panel = Object.Instantiate(prefab, uiCanvas.transform)
+    local panel = Object.Instantiate(prefab, UIManager.uiCanvas.transform)
     panel.name = panelName
     --panel:SetActive(true)
-    windows[panelName] = panel
+    UIManager.windows[panelName] = panel
     return panel
 end
 
-local function ClosePanel(panelName)
-    local target = windows[panelName]
+function UIManager:ClosePanel(panelName)
+    local target = UIManager.windows[panelName]
     if target == nil then
         target:SetActive(false)
     end
 end
 
-UIManager.Init = Init
-UIManager.OpenPanel = OpenPanel
-UIManager.ClosePanel = ClosePanel
 
 return UIManager

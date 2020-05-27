@@ -4,7 +4,8 @@ require 'Global.Global'
 LuaGameEntry = {}
 local function EnterGame()
     print('enter game')
-    UIManager.Init()
+    UIManager:GetInstance():StartUp()
+    UIManager:GetInstance():Init()
   
 end
 

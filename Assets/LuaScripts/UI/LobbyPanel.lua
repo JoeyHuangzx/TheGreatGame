@@ -48,7 +48,7 @@ end
 
 function LobbyPanel:PlayClick(obj)
     print('click play game',self,obj)
-    UIManager.OpenPanel('GamePanel')
+    UIManager:GetInstance():OpenPanel('GamePanel')
 end
 
 function LobbyPanel:SkinClick(obj)

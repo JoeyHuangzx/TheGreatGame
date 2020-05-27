@@ -12,4 +12,8 @@ function Singleton:GetInstance()
 	return self.instance
 end
 
+function Singleton:StartUp()
+	-- body
+end
+
 return Singleton

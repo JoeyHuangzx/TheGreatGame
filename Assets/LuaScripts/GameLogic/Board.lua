@@ -1,21 +1,26 @@
 
-Board={}
+Board=BaseClass('Board', BaseComponent)
 
 Board.Obj=nil
 local dir=nil
 
-local function Init()
+function Ball:constructor(params)
+    self.base = Board.base
+    print('Ball Constructor')
+end
+
+function Board:Init()
     print('board init')
     Board.Obj=CS.XLuaUtils.GetGameObjectByName("board")
     dir=Vector3(1,0,0)
     print(Board.Obj)
 end
 
-local function Start()
+function Board:Start()
     print('board Start')
 end
 
-local function Update()
+function Board:Update()
     if Board.Obj.transform.position.x >3 then
         dir.x=-1
     end
@@ -26,8 +31,5 @@ local function Update()
 
 end
 
-Board.Init=Init
-Board.Start=Start
-Board.Update=Update
 
 return Board
