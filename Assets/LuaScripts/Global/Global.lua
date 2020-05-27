@@ -4,7 +4,7 @@
 --]]
 
 require "Framework.Common.BaseClass"
-BaseComponent=require "Common.SimpleOOP.BaseComponent"
+BaseComponent=require "Framework.UI.BaseComponent"
 LuaUpdate=require "Framework.Common.LuaUpdate"
 Singleton=require "Framework.Common.Singleton"
 EventMessager=require "Framework.Common.EventMessager"

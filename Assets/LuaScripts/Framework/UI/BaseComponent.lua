@@ -6,7 +6,7 @@ BaseComponent.transform='unity transform'
 
 function BaseComponent:constructor(self,params)
     -- statements
-    print('I am BaseComponent:',self,params,self.num)
+    print('I am BaseComponent:',self,params)
 end
 
 function BaseComponent:Awake()
@@ -20,6 +20,12 @@ end
 
 function BaseComponent:Start( )
     print('BaseComponent Start fun...')
+end
+
+function BaseComponent:OnClick(obj,_callback)
+    obj:GetComponent('Button').onClick:AddListener(function()
+        _callback(self,obj)
+    end)
 end
 
 ----BaseComponent.Awake=Awake

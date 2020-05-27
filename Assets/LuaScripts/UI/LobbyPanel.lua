@@ -1,47 +1,71 @@
-local panelName = 'LobbyPanel'
+LobbyPanel=BaseClass('LobbyPanel',BaseComponent)
 
 local playBtn = nil
 local skinBtn = nil
 local musicBtn = nil
 
-function Awake()
-  --  print(panelName, ' this is Awake function', self.gameObject.name)
-    playBtn = CS.XLuaUtils.GetGameObjectByName('playBtn',self.gameObject)
-    skinBtn = CS.XLuaUtils.GetGameObjectByName('skinBtn',self.gameObject)
-    musicBtn = CS.XLuaUtils.GetGameObjectByName('musicBtn',self.gameObject)
+function LobbyPanel:constructor(params)
+    self.base = LobbyPanel.base
+    --self.base.constructor(self,params)
 end
 
-function OnEnable()
+function LobbyPanel:Awake()
+    self.base.Awake()
+  --  print(panelName, ' this is Awake function', self.gameObject.name)
+    playBtn = CS.XLuaUtils.GetGameObjectByName('playBtn')
+    skinBtn = CS.XLuaUtils.GetGameObjectByName('skinBtn')
+    musicBtn = CS.XLuaUtils.GetGameObjectByName('musicBtn')
+    self:Start()
+end
+
+function LobbyPanel:OnCreate(gameObject)
+    self.gameObject=gameObject
+    if self.gameObject~=nil then
+        self.gameObject:SetActive(true)
+        self:Awake()
+    else
+        assert(self.gameObject,'the gameobject is null')
+    end
+    
+end
+
+function LobbyPanel:OnEnable()
+    self:Awake()
    -- print(panelName, ' LobbyPanel this is OnEnable function')
 end
 
-function Start()
+function LobbyPanel:Start()
   --  print(panelName, '  this is Start function')
-    AddListener()
+    self:AddListener()
 end
 
-function AddListener()
-    playBtn:AddButtonListener(PlayClick)
-    skinBtn:AddButtonListener(SkinClick)
-    musicBtn:AddButtonListener(MusicClick)
+function LobbyPanel:AddListener()
+    print(self)
+    self:OnClick(playBtn,self.PlayClick)
+    self:OnClick(skinBtn,self.SkinClick)
+    self:OnClick(musicBtn,self.MusicClick)
 end
 
-function PlayClick()
+function LobbyPanel:PlayClick(obj)
+    print('click play game',self,obj)
     UIManager.OpenPanel('GamePanel')
 end
 
-function SkinClick()
-    print(' SkinClick handle')
+function LobbyPanel:SkinClick(obj)
+    print(' SkinClick handle',self,obj)
 end
 
-function MusicClick()
-    print(' MusicClick handle')
+function LobbyPanel:MusicClick(obj)
+    print(' MusicClick handle',self,obj)
 end
 
-function Update()
+function LobbyPanel:Update()
     -- print("this is Update function")
 end
 
-function OnDestroy()
+function LobbyPanel:OnDestroy()
     print('this is OnDestroy function')
 end
+
+return LobbyPanel
+

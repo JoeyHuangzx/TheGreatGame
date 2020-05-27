@@ -5,10 +5,6 @@ LuaGameEntry = {}
 local function EnterGame()
     print('enter game')
     UIManager.Init()
-
-   
-    EventMessager:GetInstance():AddListener('click',Handle)
-    EventMessager:GetInstance():DispatchEvent('click','sdfsa',LuaGameEntry,'2434')
   
 end
 
