@@ -7,6 +7,7 @@ local board=nil
 local camera=nil
 
 local function GetBoard()
+    
     if board ==nil then
         board=require "GameLogic.Board"
     end

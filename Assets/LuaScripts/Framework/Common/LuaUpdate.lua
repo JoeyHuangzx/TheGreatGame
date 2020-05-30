@@ -15,6 +15,7 @@ end
 
 function LuaUpdate:Start()
     --  print('luaupdate start...')
+    
 end
 
 function Update()
