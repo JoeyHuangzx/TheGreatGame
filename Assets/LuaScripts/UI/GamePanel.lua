@@ -11,18 +11,30 @@ local rightBtn = nil
 local touchJumpBtn = nil
 
 function GamePanel:Awake()
-    --InitUI()
+    self:InitUI()
    -- InitGame()
    -- CreateBoard()
 end
 
 function GamePanel:InitUI()
+   
     --[[ pauseBtn = CS.XLuaUtils.GetGameObjectByName('pauseBtn', self.gameObject)
     homeBtn = CS.XLuaUtils.GetGameObjectByName('homeBtn', self.gameObject)
     resetBtn = CS.XLuaUtils.GetGameObjectByName('resetBtn', self.gameObject)
     leftBtn = CS.XLuaUtils.GetGameObjectByName('leftBtn', self.gameObject)
     rightBtn = CS.XLuaUtils.GetGameObjectByName('rightBtn', self.gameObject)
     touchJumpBtn = CS.XLuaUtils.GetGameObjectByName('touchJump', self.gameObject) ]]
+end
+
+function GamePanel:OnCreate(gameObject)
+    self.gameObject = gameObject
+    self.transform = gameObject.transform
+    if self.gameObject ~= nil then
+        self.gameObject:SetActive(true)
+        self:Awake()
+    else
+        assert(self.gameObject, 'the gameobject is null')
+    end
 end
 
 function GamePanel:OnEnable()

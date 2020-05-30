@@ -11,9 +11,9 @@ end
 
 -- transform.find 查找
 function ObjectUtil:TranFindComponents(_name, _parent)
-    local transList = _parent:GetComponentsInChildren(typeof(CS.UnityEngine.Transform))
+    local transList = _parent:GetComponentsInChildren(typeof(CS.UnityEngine.Transform),true)
     local target = nil
-    -- print(transList,transList.Length)
+     print(transList,transList.Length)
     for i = 0, transList.Length - 1 do
         if _name == transList[i].name then
             target = transList[i].gameObject

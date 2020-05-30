@@ -1,32 +1,29 @@
-local Ball = BaseClass('Ball', LuaUpdate)
+local Ball = BaseClass('Ball', BaseEntity)
+local base=BaseEntity
 Ball.timer = 0
 Ball.isUpdate = false
 
-function Ball:constructor(params)
-    self.base = Ball.base
-    print('Ball Constructor')
+function Ball:constructor()
+    --self.base = Ball.base
+    --print('Ball Constructor',self,self.base,Ball.base)
+end
+
+function Ball:OnCreate(_gameObject)
+    self.gameObject=_gameObject
+    self.transform=_gameObject.transform
+    base.OnCreate(self)
+    self:Start()
 end
 
 function Ball:Start()
-    self.base:Start()
-    --self:Start()
-    print('Ball Start fun...', self)
-    self:EnableUpdate(true)
-    Ball.isUpdate = true
+    
+    print('Ball Start fun...',self, self.gameObject.name,self.transform.name)
+    base.Enable(self)
+   -- Ball.isUpdate = true
 end
 
 function Ball:Update()
-    if Ball.isUpdate then
-        print('ball update')
-        -- Ball.timer+=self.fixedDeltaTime
-
-        if Ball.timer > 10 then
-            self:RemoveEnable()
-        else
-            Ball.timer = Ball.timer + self.fixedDeltaTime
-           -- print('timer:',Ball.timer)
-        end
-    end
+    print('ball update',self.gameObject.name)
 end
 
 function Ball:LateUpdate()

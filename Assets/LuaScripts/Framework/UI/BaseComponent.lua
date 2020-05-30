@@ -6,11 +6,11 @@ BaseComponent.transform='unity transform'
 
 function BaseComponent:constructor(self,params)
     -- statements
-    print('I am BaseComponent:',self,params)
+   -- print('I am BaseComponent:',self,params)
 end
 
 function BaseComponent:Awake()
-    print('BaseComponent Awake fun')
+   -- print('BaseComponent Awake fun')
 end
 
 function BaseComponent:Enable(self,params)

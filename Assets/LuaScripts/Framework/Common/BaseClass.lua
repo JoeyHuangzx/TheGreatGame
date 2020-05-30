@@ -20,6 +20,8 @@ function BaseClass(_className, _base)
                 __index = Class[_class]
             }
         )
+        classObj.base=_base
+        classObj.name=_className
         -- 调用初始化方法
         -- 递归调用构造函数
         -- 先调用基类的构造函数，再调用自己的
@@ -38,7 +40,7 @@ function BaseClass(_className, _base)
             end
             create(_class, ...)
         end
-        classObj.base=_base
+       
         return classObj
     end
 

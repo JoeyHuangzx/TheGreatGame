@@ -1,9 +1,9 @@
 LobbyPanel = BaseClass('LobbyPanel', BaseComponent)
 
-local playBtn = nil
-local skinBtn = nil
-local musicBtn = nil
-local panelPath = 'Canvas/LobbyPanel'
+--local playBtn = nil
+--local skinBtn = nil
+--local musicBtn = nil
+--local panelPath = 'Canvas/LobbyPanel'
 
 function LobbyPanel:constructor(params)
     self.base = LobbyPanel.base
@@ -13,9 +13,9 @@ end
 function LobbyPanel:Awake()
     self.base.Awake()
     --  print(panelName, ' this is Awake function', self.gameObject.name)
-    playBtn = ObjectUtil:FindGameObject('playBtn', self.transform)
-    skinBtn = ObjectUtil:FindGameObject('skinBtn', self.transform)
-    musicBtn = ObjectUtil:FindGameObject('musicBtn', self.transform)
+    self.playBtn = ObjectUtil:FindGameObject('playBtn', self.transform)
+    self.skinBtn = ObjectUtil:FindGameObject('skinBtn', self.transform)
+    self.musicBtn = ObjectUtil:FindGameObject('musicBtn', self.transform)
     self:Start()
 end
 
@@ -40,11 +40,15 @@ function LobbyPanel:Start()
     self:AddListener()
 end
 
+function LobbyPanel:SetActive(enable)
+    self.gameObject:SetActive(enable)
+end
+
 function LobbyPanel:AddListener()
     print(self)
-    self:OnClick(playBtn, self.PlayClick)
-    self:OnClick(skinBtn, self.SkinClick)
-    self:OnClick(musicBtn, self.MusicClick)
+    self:OnClick(self.playBtn, self.PlayClick)
+    self:OnClick(self.skinBtn, self.SkinClick)
+    self:OnClick(self.musicBtn, self.MusicClick)
 end
 
 function LobbyPanel:PlayClick(obj)

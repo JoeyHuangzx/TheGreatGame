@@ -3,13 +3,18 @@
 
 --]]
 require 'Framework.Common.BaseClass'
+
 BaseComponent = require 'Framework.UI.BaseComponent'
 LuaUpdate = require 'Framework.Common.LuaUpdate'
 Singleton = require 'Framework.Common.Singleton'
 EventMessager = require 'Framework.Common.EventMessager'
 
+UIConfig=require 'UI.UIConfig'
+EntityConfig=require 'GameLogic.EntityConfig'
+
 Util = require 'Framework.Common.ObjectUtil'
 ResourcesManager = require 'Framework.Common.ResourcesManager'
+EntityManager=require 'GameLogic.EntityManager'
 UIManager = require 'UI.UIManager'
 
 --LuaMonoBehaviour=require "Common.LuaMonoBehaviour"

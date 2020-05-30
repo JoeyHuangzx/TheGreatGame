@@ -1,19 +1,19 @@
+Board = BaseClass('Board', BaseEntity)
+local base=BaseEntity
 
-Board=BaseClass('Board', BaseComponent)
+local dir = nil
 
-Board.Obj=nil
-local dir=nil
-
-function Ball:constructor(params)
-    self.base = Board.base
-    print('Ball Constructor')
+function Board:constructor()
+ --   self.base = Board.base
+ --   print('board Constructor',self.name,self.base.name)
 end
 
-function Board:Init()
-    print('board init')
-    Board.Obj=CS.XLuaUtils.GetGameObjectByName("board")
-    dir=Vector3(1,0,0)
-    print(Board.Obj)
+function Board:OnCreate(_gameObject)
+    self.gameObject=_gameObject
+    self.transform=_gameObject.transform
+    base.OnCreate(self)
+    print('board Start fun...',self, self.gameObject.name, self.transform.name)
+    base.Enable(self)
 end
 
 function Board:Start()
@@ -21,15 +21,8 @@ function Board:Start()
 end
 
 function Board:Update()
-    if Board.Obj.transform.position.x >3 then
-        dir.x=-1
-    end
-    if(Board.Obj.transform.position.x<-3) then
-        dir.x=1
-    end
- --   obj.transform:Translate(dir/30)
-
+    print('baord update',self.gameObject.name)
+    --   obj.transform:Translate(dir/30)
 end
-
 
 return Board

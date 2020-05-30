@@ -3,14 +3,15 @@ require 'Global.Global'
 
 LuaGameEntry = {}
 local function EnterGame()
-    print('enter game')
+  --  print('enter game')
     UIManager:GetInstance():StartUp()
     UIManager:GetInstance():Init()
+    EntityManager:GetInstance():Init()
   
 end
 
 local function Start()
-    print('start game')
+   -- print('start game')
     EnterGame()
 end
 
