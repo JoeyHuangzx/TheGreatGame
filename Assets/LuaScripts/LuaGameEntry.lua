@@ -3,20 +3,16 @@ require 'Global.Global'
 
 LuaGameEntry = {}
 local function EnterGame()
-  --  print('enter game')
-    UIManager:GetInstance():StartUp()
-    UIManager:GetInstance():Init()
     EntityManager:GetInstance():Init()
-  
 end
 
 local function Start()
-   -- print('start game')
-    EnterGame()
+    EventMessager:AddListener('StartGame', EnterGame)
+    UIManager:GetInstance():Init()
 end
 
-function Handle(a,b,c)
-    print('listeneer handle',a,b,c)
+function Handle(a, b, c)
+    print('listeneer handle', a, b, c)
     EventMessager:GetInstance():RemoveListener('click')
 end
 

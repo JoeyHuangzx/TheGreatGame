@@ -14,7 +14,8 @@ public class LuaUpdate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+      //  Instantiate()
+      
     }
 
     public void AddUpdate(LuaEnv luaEnv)

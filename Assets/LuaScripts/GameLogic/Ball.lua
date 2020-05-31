@@ -11,19 +11,27 @@ end
 function Ball:OnCreate(_gameObject)
     self.gameObject=_gameObject
     self.transform=_gameObject.transform
+    
     base.OnCreate(self)
     self:Start()
 end
 
+function Ball:SetActive(enable)
+    self.gameObject:SetActive(enable)
+end
+
 function Ball:Start()
     
-    print('Ball Start fun...',self, self.gameObject.name,self.transform.name)
-    base.Enable(self)
+  --  print('Ball Start fun...',self, self.gameObject.name,self.transform.name)
+    self:EnableUpdate(true)
+    self.gameObject:SetActive(true)
+    
    -- Ball.isUpdate = true
 end
 
-function Ball:Update()
-    print('ball update',self.gameObject.name)
+function Ball.Update(self)
+    self.transform.position=Vector3(self.transform.position.x,self.transform.position.y+0.1,0)
+    --print('ball update',self.gameObject.name)
 end
 
 function Ball:LateUpdate()
@@ -44,6 +52,6 @@ end
 
 --Ball.constructor=constructor
 --Ball.Jump=Jump
---Ball.Move=Move
+Ball.base=base
 
 return Ball

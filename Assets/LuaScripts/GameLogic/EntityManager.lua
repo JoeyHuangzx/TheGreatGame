@@ -1,26 +1,43 @@
-EntityManager=BaseClass('EntityManager', Singleton)
+EntityManager = BaseClass('EntityManager', Singleton)
 
 function EntityManager:Init()
-    local ball=EntityConfig.Ball.New()
-    local obj=ObjectUtil:TranFindComponents('ball',GameObject.Find('Game').transform)
+    local camera = EntityConfig.Camera.New()
+    camera:OnCreate()
+
+    local gameOBj=GameObject.Find('Game').transform
+
+    local ball = EntityConfig.Ball.New()
+    local prefab = ObjectUtil:TranFindComponents('ball', gameOBj)
+    local obj = CS.UnityEngine.Object.Instantiate(prefab, gameOBj)
     ball:OnCreate(obj)
 
-    local board=EntityConfig.Board.New()
-    obj=ObjectUtil:TranFindComponents('board',GameObject.Find('Game').transform)
-    board:OnCreate(obj)
+    local prefab2 = ObjectUtil:TranFindComponents('board', gameOBj)
+    for i = 1, 100 do
+        local board = EntityConfig.Board.New()
+        local obj2 = CS.UnityEngine.Object.Instantiate(prefab2, gameOBj)
+        board:OnCreate(obj2)
 
-    print('ball name:',ball.gameObject.name,ball,',board name:',board.gameObject.name,board)
+        local offset=CS.UnityEngine.Mathf.PI*2/3
+        local y=offset+i*offset
+        local x=CS.UnityEngine.Mathf.Sin(offset+i*offset)
+        board.transform.position=Vector3(x,y,0)
+        board:SetActive(true)
+    end
+
+    camera:SetFollow(ball)
+    UIManager.windows['LobbyPanel']:SetActive(false)
+    -- print('ball name:',ball.name,',board name:',board.name)
 end
 
-function EntityManager:CreateCamera(  )
+function EntityManager:CreateCamera()
     -- body
 end
 
-function EntityManager:CreateBall(  )
+function EntityManager:CreateBall()
     -- body
 end
 
-function EntityManager:CreateBoard(  )
+function EntityManager:CreateBoard()
     -- body
 end
 

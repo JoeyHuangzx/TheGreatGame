@@ -1,33 +1,47 @@
 LuaUpdate = BaseClass('LuaUpdate')
 LuaUpdate.fixedDeltaTime = 0
-LuaUpdate.UpdateHandler = {callback=nil,target=nil}
+LuaUpdate.UpdateTable = nil
 LuaUpdate.FixedUpdateHandler = nil
 LuaUpdate.LateUpdateHandler = nil
+local Timer = 0
 
 function LuaUpdate:EnableUpdate(_enable)
     if _enable == true then
-        print('start update',self)
-        if self.Update~=nil then
-            LuaUpdate.UpdateHandler.callback=self.Update
-            LuaUpdate.UpdateHandler.target=self
+     --   print('start update', self)
+        if LuaUpdate.UpdateTable==nil then
+            LuaUpdate.UpdateTable = {}
         end
-       -- LuaUpdate.UpdateHandler = self.Update or nil
-        --LuaUpdate.LateUpdateHandler = self.LateUpdate or nil
-        --LuaUpdate.FixedUpdateHandler = self.FixedUpdate or nil
+        
+        if self.Update ~= nil then
+            table.insert(LuaUpdate.UpdateTable, {callback = self.Update, target = self})
+        end
+    -- LuaUpdate.UpdateHandler = self.Update or nil
+    --LuaUpdate.LateUpdateHandler = self.LateUpdate or nil
+    --LuaUpdate.FixedUpdateHandler = self.FixedUpdate or nil
     end
 end
 
 function LuaUpdate:Start()
     --  print('luaupdate start...')
-    
 end
 
+
 function Update()
-    -- print('Update',Update)
-    if LuaUpdate.UpdateHandler.target ~= nil then
-        LuaUpdate.UpdateHandler.callback(LuaUpdate.UpdateHandler.target)
-        --print(LuaUpdate.UpdateHandler.target)
-    end
+    --  Timer=Timer+LuaUpdate.fixedDeltaTime
+    Timer=Timer+LuaUpdate.fixedDeltaTime
+    --if Timer>0.02 then
+    --    Timer=0
+        if LuaUpdate.UpdateTable ~= nil then
+            for key, value in pairs(LuaUpdate.UpdateTable) do
+          --      print(key, value, value.callback, value.target.name)
+                if value.callback~=nil then
+                    value.callback(value.target)
+                end
+            end
+        end
+   -- end
+    
+   
 end
 
 function FixedUpdate(deltaTime)
@@ -47,7 +61,7 @@ end
 
 function LuaUpdate:RemoveEnable()
     print('remove update')
-    LuaUpdate.UpdateHandler = nil
+    LuaUpdate.UpdateTable = nil
     LuaUpdate.LateUpdateHandler = nil
     LuaUpdate.FixedUpdateHandler = nil
 end

@@ -35,6 +35,11 @@ function LobbyPanel:OnEnable()
     -- print(panelName, ' LobbyPanel this is OnEnable function')
 end
 
+function LobbyPanel:SetActive(enable)
+    self.gameObject:SetActive(enable)
+end
+
+
 function LobbyPanel:Start()
     --  print(panelName, '  this is Start function')
     self:AddListener()
@@ -54,6 +59,7 @@ end
 function LobbyPanel:PlayClick(obj)
     print('click play game', self, obj)
     UIManager:GetInstance():OpenPanel('GamePanel')
+    EventMessager:DispatchEvent('StartGame')
 end
 
 function LobbyPanel:SkinClick(obj)

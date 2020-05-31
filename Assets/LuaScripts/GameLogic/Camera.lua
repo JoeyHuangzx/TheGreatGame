@@ -1,26 +1,36 @@
 
-Camera={}
+Camera=BaseClass('Camera',LuaUpdate)
 
-Camera.Obj=nil
-local ballObj=nil
-local Offset=nil
-local pos=nil
+local target=nil
+local isUpdate=false
 
-local function Init()
-    Camera.Obj=GameObject.Find("UICamera");
-   --[[  pos=Camera.Obj.transform.position
-    ballObj=Ball.Obj
-    Offset=pos-ballObj.transform.position ]]
+function Camera:constructor()
+    
 end
 
-local function Update()
-    if ballObj ~= nil then
-        pos=Camera.Obj.transform.position
-        --Camera.Obj.transform.position=Vector3(pos.x,ballObj.transform.position.y+Offset.y,pos.z)
-    end
+function Camera:OnCreate()
+    self:Init()
+    self:EnableUpdate(true)
 end
 
-Camera.Init=Init
-Camera.Update=Update
+function Camera:SetFollow(_target)
+    target=_target
+    isUpdate=true
+end
+
+function Camera:Init()
+    self.gameObject=GameObject.Find("Main Camera")
+    self.transform=self.gameObject.transform
+    
+end
+
+local targetY=0
+function Camera.Update(self)
+    if isUpdate==true then
+        targetY=MathTool:Lerp(self.transform.position.y,target.transform.position.y,0.1)
+        self.transform.position=Vector3(target.transform.position.x,targetY,-10)
+    end 
+end
+
 
 return Camera

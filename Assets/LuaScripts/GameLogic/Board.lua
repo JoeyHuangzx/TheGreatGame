@@ -11,18 +11,27 @@ end
 function Board:OnCreate(_gameObject)
     self.gameObject=_gameObject
     self.transform=_gameObject.transform
+    base.id=102
     base.OnCreate(self)
-    print('board Start fun...',self, self.gameObject.name, self.transform.name)
-    base.Enable(self)
+    self:Start()
+ --   print('board Start fun...',self, self.gameObject.name, self.transform.name)
+  
+end
+
+function Board:SetActive(enable)
+    self.gameObject:SetActive(enable)
 end
 
 function Board:Start()
     print('board Start')
+    self:EnableUpdate(true)
 end
 
-function Board:Update()
-    print('baord update',self.gameObject.name)
+function Board.Update(self)
+    --print('baord update',self.gameObject.name)
     --   obj.transform:Translate(dir/30)
 end
+
+Board.base=base
 
 return Board

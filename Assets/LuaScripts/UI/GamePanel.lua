@@ -41,6 +41,10 @@ function GamePanel:OnEnable()
     -- print(panelName, ' LobbyPanel this is OnEnable function')
 end
 
+function GamePanel:SetActive(enable)
+    self.gameObject:SetActive(enable)
+end
+
 function GamePanel:Start()
     -- print(panelName, '  this is Start function')
   --[[   if board ~= nil then

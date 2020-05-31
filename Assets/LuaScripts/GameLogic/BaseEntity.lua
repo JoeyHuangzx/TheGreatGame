@@ -1,5 +1,6 @@
 
 BaseEntity=BaseClass('BaseEntity',LuaUpdate)
+BaseEntity.id=111
 local base=LuaUpdate
 
 function BaseEntity:constructor()
@@ -14,8 +15,7 @@ function BaseEntity.OnCreate(self)
 end
 
 local function Enable(self)
-    print(self)
-    self:EnableUpdate(true)
+  --  self:EnableUpdate(true)
 end
 
 BaseEntity.Enable=Enable

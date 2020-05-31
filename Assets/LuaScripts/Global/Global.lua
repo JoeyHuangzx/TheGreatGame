@@ -12,6 +12,8 @@ EventMessager = require 'Framework.Common.EventMessager'
 UIConfig=require 'UI.UIConfig'
 EntityConfig=require 'GameLogic.EntityConfig'
 
+MathTool=require 'Common.MathTool'
+
 Util = require 'Framework.Common.ObjectUtil'
 ResourcesManager = require 'Framework.Common.ResourcesManager'
 EntityManager=require 'GameLogic.EntityManager'
