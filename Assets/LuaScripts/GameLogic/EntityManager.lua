@@ -17,9 +17,9 @@ function EntityManager:Init()
         local obj2 = CS.UnityEngine.Object.Instantiate(prefab2, gameOBj)
         board:OnCreate(obj2)
 
-        local offset=CS.UnityEngine.Mathf.PI*2/3
+        local offset=CS.UnityEngine.Mathf.PI*110/180
         local y=offset+i*offset
-        local x=CS.UnityEngine.Mathf.Sin(offset+i*offset)
+        local x=CS.UnityEngine.Mathf.Sin(offset+i*offset)*3
         board.transform.position=Vector3(x,y,0)
         board:SetActive(true)
     end

@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_JustJump\Scripts\DemoClass.cs" />
     <Compile Include="Assets\EasyTouchBundle\EasyTouch\Examples\4.X\AdvancedExamples\AutoSelect\MultiLayerTouch.cs" />
     <Compile Include="Assets\EasyTouchBundle\EasyTouch\Examples\4.X\AdvancedExamples\AutoSelect\MultiLayerUI.cs" />
     <Compile Include="Assets\EasyTouchBundle\EasyTouch\Examples\4.X\AdvancedExamples\MultiCamera\MultiCameraTouch.cs" />
@@ -376,6 +377,7 @@
     <None Include="Assets\EasyTouchBundle\EasyTouchControls\ReleaseNotes.txt" />
     <None Include="Assets\XLua\Examples\03_UIEvent\ButtonInteraction.lua" />
     <None Include="Assets\LuaScripts\Framework\UI\BaseComponent.lua" />
+    <None Include="Assets\LuaScripts\_Test\DemoClass.lua" />
     <None Include="Assets\LuaScripts\Global\Util.lua" />
     <None Include="Assets\LuaScripts\UI\UIConfig.lua" />
     <None Include="Assets\XLua\Examples\06_Coroutine\Resources\coruntine_test.lua.txt" />

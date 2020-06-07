@@ -3,12 +3,15 @@ require 'Global.Global'
 
 LuaGameEntry = {}
 local function EnterGame()
-    EntityManager:GetInstance():Init()
+  
+    --EntityManager:GetInstance():Init()
 end
 
 local function Start()
-    EventMessager:AddListener('StartGame', EnterGame)
-    UIManager:GetInstance():Init()
+    --EventMessager:AddListener('StartGame', EnterGame)
+    local demo=require '_Test.DemoClass'
+    demo:Test()
+    --UIManager:GetInstance():Init()
 end
 
 function Handle(a, b, c)
