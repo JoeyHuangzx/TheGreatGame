@@ -28,7 +28,7 @@ end
 function UIManager:CreatePanel(panelName)
     -- local panel = CS.XLuaUtils.GetGameObjectByName(panelName)
     print('create panel name:',panelName)
-    local prefab = ResourcesManager.Load(panelName) --CS.UnityEngine.Resources.Load("GameOverPanel")
+    local prefab = ResourcesManager.Load("UI/"..panelName) --CS.UnityEngine.Resources.Load("GameOverPanel")
     local panelObj = Object.Instantiate(prefab, self.uiCanvas.transform)
     local panel = UIConfig[panelName].New()
     UIManager.windows[panelName] = panel
