@@ -163,6 +163,9 @@ namespace XLua.CSObjectWrap
             translator.DelayWrapLoader(typeof(XLuaTest.NoGc), XLuaTestNoGcWrap.__Register);
         
         
+            translator.DelayWrapLoader(typeof(XLua.LuaDLL.LuaBuildIn), XLuaLuaDLLLuaBuildInWrap.__Register);
+        
+        
             translator.DelayWrapLoader(typeof(Tutorial.DrivenClass.TestEnumInner), TutorialDrivenClassTestEnumInnerWrap.__Register);
         
         

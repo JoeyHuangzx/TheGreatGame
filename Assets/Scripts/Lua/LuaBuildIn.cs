@@ -1,5 +1,4 @@
-﻿using AOT;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -7,15 +6,15 @@ using System.Runtime.InteropServices;
 namespace XLua.LuaDLL
 {
     [LuaCallCSharp]
-    public static class LuaBuildIn
+    public partial class LuaBuildIn
     {
-        [DllImport("LuaDLL", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int luaopen_rapidjson(System.IntPtr l);
+        [DllImport("xlua", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int luaopen_rapidjson(System.IntPtr L);
 
         [MonoPInvokeCallback(typeof(LuaDLL.lua_CSFunction))]
-        public static int LoadRapidJson(IntPtr l)
+        public static int LoadRapidJson(IntPtr L)
         {
-            return luaopen_rapidjson(l);
+            return luaopen_rapidjson(L);
         }
 
     }

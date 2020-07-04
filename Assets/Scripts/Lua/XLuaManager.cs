@@ -39,9 +39,9 @@ public class XLuaManager : MonoSingleton<XLuaManager>
         if (luaEnv != null)
         {
             luaEnv.AddLoader(CustomLoader);
+            luaEnv.AddBuildin("rapidjson", XLua.LuaDLL.LuaBuildIn.LoadRapidJson);
             this.meta = luaEnv.NewTable();
             meta.Set("__index", luaEnv.Global);
-            luaEnv.AddBuildin("rapidjson", XLua.LuaDLL.LuaBuildIn.LoadRapidJson);
         }
         //luaFilePathDict.Add("LobbyPanel", "UI/LobbyPanel");
         //luaFilePathDict.Add("GamePanel", "UI/GamePanel");

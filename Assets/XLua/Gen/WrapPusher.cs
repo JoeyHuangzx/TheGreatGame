@@ -27,6 +27,8 @@ namespace XLua
 			{
 			
 				translator.RegisterPushAndGetAndUpdate<PushAsTableStruct>(translator.PushPushAsTableStruct, translator.Get, translator.UpdatePushAsTableStruct);
+				translator.RegisterPushAndGetAndUpdate<XLuaTest.Pedding>(translator.PushXLuaTestPedding, translator.Get, translator.UpdateXLuaTestPedding);
+				translator.RegisterPushAndGetAndUpdate<XLuaTest.MyStruct>(translator.PushXLuaTestMyStruct, translator.Get, translator.UpdateXLuaTestMyStruct);
 				translator.RegisterPushAndGetAndUpdate<UnityEngine.Vector2>(translator.PushUnityEngineVector2, translator.Get, translator.UpdateUnityEngineVector2);
 				translator.RegisterPushAndGetAndUpdate<UnityEngine.Vector3>(translator.PushUnityEngineVector3, translator.Get, translator.UpdateUnityEngineVector3);
 				translator.RegisterPushAndGetAndUpdate<UnityEngine.Vector4>(translator.PushUnityEngineVector4, translator.Get, translator.UpdateUnityEngineVector4);
@@ -35,8 +37,6 @@ namespace XLua
 				translator.RegisterPushAndGetAndUpdate<UnityEngine.Ray>(translator.PushUnityEngineRay, translator.Get, translator.UpdateUnityEngineRay);
 				translator.RegisterPushAndGetAndUpdate<UnityEngine.Bounds>(translator.PushUnityEngineBounds, translator.Get, translator.UpdateUnityEngineBounds);
 				translator.RegisterPushAndGetAndUpdate<UnityEngine.Ray2D>(translator.PushUnityEngineRay2D, translator.Get, translator.UpdateUnityEngineRay2D);
-				translator.RegisterPushAndGetAndUpdate<XLuaTest.Pedding>(translator.PushXLuaTestPedding, translator.Get, translator.UpdateXLuaTestPedding);
-				translator.RegisterPushAndGetAndUpdate<XLuaTest.MyStruct>(translator.PushXLuaTestMyStruct, translator.Get, translator.UpdateXLuaTestMyStruct);
 				translator.RegisterPushAndGetAndUpdate<Tutorial.TestEnum>(translator.PushTutorialTestEnum, translator.Get, translator.UpdateTutorialTestEnum);
 				translator.RegisterPushAndGetAndUpdate<XLuaTest.MyEnum>(translator.PushXLuaTestMyEnum, translator.Get, translator.UpdateXLuaTestMyEnum);
 				translator.RegisterPushAndGetAndUpdate<Tutorial.DrivenClass.TestEnumInner>(translator.PushTutorialDrivenClassTestEnumInner, translator.Get, translator.UpdateTutorialDrivenClassTestEnumInner);
@@ -104,6 +104,138 @@ namespace XLua
             {
 			    return;
 			}
+			
+            else
+            {
+                throw new Exception("try to update a data with lua type:" + LuaAPI.lua_type(L, index));
+            }
+        }
+        
+        int XLuaTestPedding_TypeID = -1;
+        public void PushXLuaTestPedding(RealStatePtr L, XLuaTest.Pedding val)
+        {
+            if (XLuaTestPedding_TypeID == -1)
+            {
+			    bool is_first;
+                XLuaTestPedding_TypeID = getTypeId(L, typeof(XLuaTest.Pedding), out is_first);
+				
+            }
+			
+            IntPtr buff = LuaAPI.xlua_pushstruct(L, 1, XLuaTestPedding_TypeID);
+            if (!CopyByValue.Pack(buff, 0, val))
+            {
+                throw new Exception("pack fail fail for XLuaTest.Pedding ,value="+val);
+            }
+			
+        }
+		
+        public void Get(RealStatePtr L, int index, out XLuaTest.Pedding val)
+        {
+		    LuaTypes type = LuaAPI.lua_type(L, index);
+            if (type == LuaTypes.LUA_TUSERDATA )
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != XLuaTestPedding_TypeID)
+				{
+				    throw new Exception("invalid userdata for XLuaTest.Pedding");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);if (!CopyByValue.UnPack(buff, 0, out val))
+                {
+                    throw new Exception("unpack fail for XLuaTest.Pedding");
+                }
+            }
+			else if (type ==LuaTypes.LUA_TTABLE)
+			{
+			    CopyByValue.UnPack(this, L, index, out val);
+			}
+            else
+            {
+                val = (XLuaTest.Pedding)objectCasters.GetCaster(typeof(XLuaTest.Pedding))(L, index, null);
+            }
+        }
+		
+        public void UpdateXLuaTestPedding(RealStatePtr L, int index, XLuaTest.Pedding val)
+        {
+		    
+            if (LuaAPI.lua_type(L, index) == LuaTypes.LUA_TUSERDATA)
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != XLuaTestPedding_TypeID)
+				{
+				    throw new Exception("invalid userdata for XLuaTest.Pedding");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+                if (!CopyByValue.Pack(buff, 0,  val))
+                {
+                    throw new Exception("pack fail for XLuaTest.Pedding ,value="+val);
+                }
+            }
+			
+            else
+            {
+                throw new Exception("try to update a data with lua type:" + LuaAPI.lua_type(L, index));
+            }
+        }
+        
+        int XLuaTestMyStruct_TypeID = -1;
+        public void PushXLuaTestMyStruct(RealStatePtr L, XLuaTest.MyStruct val)
+        {
+            if (XLuaTestMyStruct_TypeID == -1)
+            {
+			    bool is_first;
+                XLuaTestMyStruct_TypeID = getTypeId(L, typeof(XLuaTest.MyStruct), out is_first);
+				
+            }
+			
+            IntPtr buff = LuaAPI.xlua_pushstruct(L, 25, XLuaTestMyStruct_TypeID);
+            if (!CopyByValue.Pack(buff, 0, val))
+            {
+                throw new Exception("pack fail fail for XLuaTest.MyStruct ,value="+val);
+            }
+			
+        }
+		
+        public void Get(RealStatePtr L, int index, out XLuaTest.MyStruct val)
+        {
+		    LuaTypes type = LuaAPI.lua_type(L, index);
+            if (type == LuaTypes.LUA_TUSERDATA )
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != XLuaTestMyStruct_TypeID)
+				{
+				    throw new Exception("invalid userdata for XLuaTest.MyStruct");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);if (!CopyByValue.UnPack(buff, 0, out val))
+                {
+                    throw new Exception("unpack fail for XLuaTest.MyStruct");
+                }
+            }
+			else if (type ==LuaTypes.LUA_TTABLE)
+			{
+			    CopyByValue.UnPack(this, L, index, out val);
+			}
+            else
+            {
+                val = (XLuaTest.MyStruct)objectCasters.GetCaster(typeof(XLuaTest.MyStruct))(L, index, null);
+            }
+        }
+		
+        public void UpdateXLuaTestMyStruct(RealStatePtr L, int index, XLuaTest.MyStruct val)
+        {
+		    
+            if (LuaAPI.lua_type(L, index) == LuaTypes.LUA_TUSERDATA)
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != XLuaTestMyStruct_TypeID)
+				{
+				    throw new Exception("invalid userdata for XLuaTest.MyStruct");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+                if (!CopyByValue.Pack(buff, 0,  val))
+                {
+                    throw new Exception("pack fail for XLuaTest.MyStruct ,value="+val);
+                }
+            }
 			
             else
             {
@@ -639,138 +771,6 @@ namespace XLua
             }
         }
         
-        int XLuaTestPedding_TypeID = -1;
-        public void PushXLuaTestPedding(RealStatePtr L, XLuaTest.Pedding val)
-        {
-            if (XLuaTestPedding_TypeID == -1)
-            {
-			    bool is_first;
-                XLuaTestPedding_TypeID = getTypeId(L, typeof(XLuaTest.Pedding), out is_first);
-				
-            }
-			
-            IntPtr buff = LuaAPI.xlua_pushstruct(L, 1, XLuaTestPedding_TypeID);
-            if (!CopyByValue.Pack(buff, 0, val))
-            {
-                throw new Exception("pack fail fail for XLuaTest.Pedding ,value="+val);
-            }
-			
-        }
-		
-        public void Get(RealStatePtr L, int index, out XLuaTest.Pedding val)
-        {
-		    LuaTypes type = LuaAPI.lua_type(L, index);
-            if (type == LuaTypes.LUA_TUSERDATA )
-            {
-			    if (LuaAPI.xlua_gettypeid(L, index) != XLuaTestPedding_TypeID)
-				{
-				    throw new Exception("invalid userdata for XLuaTest.Pedding");
-				}
-				
-                IntPtr buff = LuaAPI.lua_touserdata(L, index);if (!CopyByValue.UnPack(buff, 0, out val))
-                {
-                    throw new Exception("unpack fail for XLuaTest.Pedding");
-                }
-            }
-			else if (type ==LuaTypes.LUA_TTABLE)
-			{
-			    CopyByValue.UnPack(this, L, index, out val);
-			}
-            else
-            {
-                val = (XLuaTest.Pedding)objectCasters.GetCaster(typeof(XLuaTest.Pedding))(L, index, null);
-            }
-        }
-		
-        public void UpdateXLuaTestPedding(RealStatePtr L, int index, XLuaTest.Pedding val)
-        {
-		    
-            if (LuaAPI.lua_type(L, index) == LuaTypes.LUA_TUSERDATA)
-            {
-			    if (LuaAPI.xlua_gettypeid(L, index) != XLuaTestPedding_TypeID)
-				{
-				    throw new Exception("invalid userdata for XLuaTest.Pedding");
-				}
-				
-                IntPtr buff = LuaAPI.lua_touserdata(L, index);
-                if (!CopyByValue.Pack(buff, 0,  val))
-                {
-                    throw new Exception("pack fail for XLuaTest.Pedding ,value="+val);
-                }
-            }
-			
-            else
-            {
-                throw new Exception("try to update a data with lua type:" + LuaAPI.lua_type(L, index));
-            }
-        }
-        
-        int XLuaTestMyStruct_TypeID = -1;
-        public void PushXLuaTestMyStruct(RealStatePtr L, XLuaTest.MyStruct val)
-        {
-            if (XLuaTestMyStruct_TypeID == -1)
-            {
-			    bool is_first;
-                XLuaTestMyStruct_TypeID = getTypeId(L, typeof(XLuaTest.MyStruct), out is_first);
-				
-            }
-			
-            IntPtr buff = LuaAPI.xlua_pushstruct(L, 25, XLuaTestMyStruct_TypeID);
-            if (!CopyByValue.Pack(buff, 0, val))
-            {
-                throw new Exception("pack fail fail for XLuaTest.MyStruct ,value="+val);
-            }
-			
-        }
-		
-        public void Get(RealStatePtr L, int index, out XLuaTest.MyStruct val)
-        {
-		    LuaTypes type = LuaAPI.lua_type(L, index);
-            if (type == LuaTypes.LUA_TUSERDATA )
-            {
-			    if (LuaAPI.xlua_gettypeid(L, index) != XLuaTestMyStruct_TypeID)
-				{
-				    throw new Exception("invalid userdata for XLuaTest.MyStruct");
-				}
-				
-                IntPtr buff = LuaAPI.lua_touserdata(L, index);if (!CopyByValue.UnPack(buff, 0, out val))
-                {
-                    throw new Exception("unpack fail for XLuaTest.MyStruct");
-                }
-            }
-			else if (type ==LuaTypes.LUA_TTABLE)
-			{
-			    CopyByValue.UnPack(this, L, index, out val);
-			}
-            else
-            {
-                val = (XLuaTest.MyStruct)objectCasters.GetCaster(typeof(XLuaTest.MyStruct))(L, index, null);
-            }
-        }
-		
-        public void UpdateXLuaTestMyStruct(RealStatePtr L, int index, XLuaTest.MyStruct val)
-        {
-		    
-            if (LuaAPI.lua_type(L, index) == LuaTypes.LUA_TUSERDATA)
-            {
-			    if (LuaAPI.xlua_gettypeid(L, index) != XLuaTestMyStruct_TypeID)
-				{
-				    throw new Exception("invalid userdata for XLuaTest.MyStruct");
-				}
-				
-                IntPtr buff = LuaAPI.lua_touserdata(L, index);
-                if (!CopyByValue.Pack(buff, 0,  val))
-                {
-                    throw new Exception("pack fail for XLuaTest.MyStruct ,value="+val);
-                }
-            }
-			
-            else
-            {
-                throw new Exception("try to update a data with lua type:" + LuaAPI.lua_type(L, index));
-            }
-        }
-        
         int TutorialTestEnum_TypeID = -1;
 		int TutorialTestEnum_EnumRef = -1;
         
@@ -1040,6 +1040,18 @@ namespace XLua
 				translator.PushPushAsTableStruct(L, array[index]);
 				return true;
 			}
+			else if (type == typeof(XLuaTest.Pedding[]))
+			{
+			    XLuaTest.Pedding[] array = obj as XLuaTest.Pedding[];
+				translator.PushXLuaTestPedding(L, array[index]);
+				return true;
+			}
+			else if (type == typeof(XLuaTest.MyStruct[]))
+			{
+			    XLuaTest.MyStruct[] array = obj as XLuaTest.MyStruct[];
+				translator.PushXLuaTestMyStruct(L, array[index]);
+				return true;
+			}
 			else if (type == typeof(UnityEngine.Vector2[]))
 			{
 			    UnityEngine.Vector2[] array = obj as UnityEngine.Vector2[];
@@ -1088,18 +1100,6 @@ namespace XLua
 				translator.PushUnityEngineRay2D(L, array[index]);
 				return true;
 			}
-			else if (type == typeof(XLuaTest.Pedding[]))
-			{
-			    XLuaTest.Pedding[] array = obj as XLuaTest.Pedding[];
-				translator.PushXLuaTestPedding(L, array[index]);
-				return true;
-			}
-			else if (type == typeof(XLuaTest.MyStruct[]))
-			{
-			    XLuaTest.MyStruct[] array = obj as XLuaTest.MyStruct[];
-				translator.PushXLuaTestMyStruct(L, array[index]);
-				return true;
-			}
 			else if (type == typeof(Tutorial.TestEnum[]))
 			{
 			    Tutorial.TestEnum[] array = obj as Tutorial.TestEnum[];
@@ -1127,6 +1127,18 @@ namespace XLua
 			if (type == typeof(PushAsTableStruct[]))
 			{
 			    PushAsTableStruct[] array = obj as PushAsTableStruct[];
+				translator.Get(L, obj_idx, out array[array_idx]);
+				return true;
+			}
+			else if (type == typeof(XLuaTest.Pedding[]))
+			{
+			    XLuaTest.Pedding[] array = obj as XLuaTest.Pedding[];
+				translator.Get(L, obj_idx, out array[array_idx]);
+				return true;
+			}
+			else if (type == typeof(XLuaTest.MyStruct[]))
+			{
+			    XLuaTest.MyStruct[] array = obj as XLuaTest.MyStruct[];
 				translator.Get(L, obj_idx, out array[array_idx]);
 				return true;
 			}
@@ -1175,18 +1187,6 @@ namespace XLua
 			else if (type == typeof(UnityEngine.Ray2D[]))
 			{
 			    UnityEngine.Ray2D[] array = obj as UnityEngine.Ray2D[];
-				translator.Get(L, obj_idx, out array[array_idx]);
-				return true;
-			}
-			else if (type == typeof(XLuaTest.Pedding[]))
-			{
-			    XLuaTest.Pedding[] array = obj as XLuaTest.Pedding[];
-				translator.Get(L, obj_idx, out array[array_idx]);
-				return true;
-			}
-			else if (type == typeof(XLuaTest.MyStruct[]))
-			{
-			    XLuaTest.MyStruct[] array = obj as XLuaTest.MyStruct[];
 				translator.Get(L, obj_idx, out array[array_idx]);
 				return true;
 			}
