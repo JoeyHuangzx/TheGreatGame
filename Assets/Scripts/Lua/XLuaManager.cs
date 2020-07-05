@@ -9,7 +9,7 @@ using XLua;
 public class XLuaManager : MonoSingleton<XLuaManager>
 {
     //放置LuaScripts代码的文件夹名字
-    public const string luaScriptsFolder = "LuaScripts";
+    public string luaScriptsFolder = "LuaScripts";
     //lua代码的文件名
     const string luaGameEntryScript = "LuaGameEntry";
 
@@ -39,12 +39,13 @@ public class XLuaManager : MonoSingleton<XLuaManager>
         if (luaEnv != null)
         {
             luaEnv.AddLoader(CustomLoader);
+            luaEnv.AddBuildin("rapidjson", XLua.LuaDLL.LuaBuildIn.LoadRapidJson);
             this.meta = luaEnv.NewTable();
             meta.Set("__index", luaEnv.Global);
         }
-        luaFilePathDict.Add("LobbyPanel", "UI/LobbyPanel");
-        luaFilePathDict.Add("GamePanel", "UI/GamePanel");
-        luaFilePathDict.Add("GameOverPanel", "UI/GameOverPanel");
+        //luaFilePathDict.Add("LobbyPanel", "UI/LobbyPanel");
+        //luaFilePathDict.Add("GamePanel", "UI/GamePanel");
+        //luaFilePathDict.Add("GameOverPanel", "UI/GameOverPanel");
     }
 
     /// <summary>
@@ -54,7 +55,7 @@ public class XLuaManager : MonoSingleton<XLuaManager>
     /// </summary>
     /// <param name="_filePath"></param>
     /// <returns></returns>
-    public static byte[] CustomLoader(ref string _filePath)
+    public byte[] CustomLoader(ref string _filePath)
     {
         string _scriptPath = string.Empty;
         _filePath = _filePath.Replace(".", "/") + ".lua";
@@ -76,9 +77,12 @@ public class XLuaManager : MonoSingleton<XLuaManager>
     {
         if (luaEnv != null)
         {
+            gameObject.GetComponent<LuaUpdate>().AddUpdate(luaEnv);
             loadScript(luaGameEntryScript);
             DoString("LuaGameEntry.Start()");
-            gameObject.GetComponent<LuaUpdate>().AddUpdate(luaEnv);
+            
+
+            
         }
     }
 

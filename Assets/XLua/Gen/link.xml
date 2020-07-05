@@ -22,6 +22,7 @@
 		<type fullname="XLuaTest.MyStruct" preserve="all"/>
 		<type fullname="XLuaTest.MyEnum" preserve="all"/>
 		<type fullname="XLuaTest.NoGc" preserve="all"/>
+		<type fullname="XLua.LuaDLL.LuaBuildIn" preserve="all"/>
 		<type fullname="Tutorial.DrivenClass+TestEnumInner" preserve="all"/>
 		
 	</assembly>
