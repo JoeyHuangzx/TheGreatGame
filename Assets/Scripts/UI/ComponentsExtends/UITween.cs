@@ -28,7 +28,9 @@ namespace UIExtension
 
         public static Tweener UIMove(this RectTransform _rect,Vector2 _v2,float _duration)
         {
+            
             return _rect.DOAnchorPos(_v2, _duration);
+
         }
 
         /// <summary>

@@ -9,6 +9,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using XLua;
 using Utility;
+using DG.Tweening;
 
 [LuaCallCSharp]
 public class XLuaUtils
@@ -71,5 +72,12 @@ public static class Extension
     public static void AddButtonListener(this GameObject go,Action _cb)
     {
         go.GetComponent<Button>().onClick.AddListener(()=> { _cb(); });
+        
     }
+
+    public static void RotationQuaternion(Transform _tran,int angle,float duration)
+    {
+        _tran.DOLocalRotateQuaternion(Quaternion.Euler(0, _tran.localRotation.eulerAngles.y + angle, 0), duration).SetEase(Ease.Flash).SetLoops(-1, LoopType.Yoyo);
+    }
+
 }

@@ -31,6 +31,7 @@ public class XLuaManager : MonoSingleton<XLuaManager>
         base.Init();
         InitLuaEnv();
         OnEntry();
+        
     }
 
     private void InitLuaEnv()
