@@ -1,15 +1,19 @@
 LuaGameEntry = {}
 
 require 'Common.JumpGlobal'
+
+require 'CodeVerify'
+
 function LuaGameEntry:Start()
     print('start...')
-    
-    print('3333start...')
-    -- local t = rapidjson.decode('{"a":123}')
-    -- print(t.a)
-    -- t.a = 456
-    -- local s = rapidjson.encode(t)
-    -- print('json', s)
+
+    InitManager()
+
+end
+
+function InitManager()
+    JumpGameController:GetInstance():Initialize()
+    CheeseSpawner:GetInstance():Initialize()
 end
 
 return LuaGameEntry

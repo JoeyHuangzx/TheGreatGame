@@ -51,3 +51,4 @@ function InitMaterialColor()
     CS.XLuaUtils.RotationQuaternion(self.transform,self.angleRotation,self.duration)
 end
 
+return JumpBehaviour

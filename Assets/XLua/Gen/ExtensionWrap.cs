@@ -31,8 +31,9 @@ namespace XLua.CSObjectWrap
 			Utils.EndObjectRegister(type, L, translator, null, null,
 			    null, null, null);
 
-		    Utils.BeginClassRegister(type, L, __CreateInstance, 1, 0, 0);
-			
+		    Utils.BeginClassRegister(type, L, __CreateInstance, 2, 0, 0);
+			Utils.RegisterFunc(L, Utils.CLS_IDX, "RotationQuaternion", _m_RotationQuaternion_xlua_st_);
+            
 			
             
 			
@@ -53,6 +54,34 @@ namespace XLua.CSObjectWrap
         
         
         
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_RotationQuaternion_xlua_st_(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+            
+                
+                {
+                    UnityEngine.Transform __tran = (UnityEngine.Transform)translator.GetObject(L, 1, typeof(UnityEngine.Transform));
+                    int _angle = LuaAPI.xlua_tointeger(L, 2);
+                    float _duration = (float)LuaAPI.lua_tonumber(L, 3);
+                    
+                    Extension.RotationQuaternion( __tran, _angle, _duration );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
         
         
         

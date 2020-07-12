@@ -82,9 +82,9 @@ namespace XLua.CSObjectWrap
             
                 
                 {
-                    System.IntPtr _l = LuaAPI.lua_touserdata(L, 1);
+                    System.IntPtr _L = LuaAPI.lua_touserdata(L, 1);
                     
-                        int gen_ret = XLua.LuaDLL.LuaBuildIn.luaopen_rapidjson( _l );
+                        int gen_ret = XLua.LuaDLL.LuaBuildIn.luaopen_rapidjson( _L );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -107,9 +107,9 @@ namespace XLua.CSObjectWrap
             
                 
                 {
-                    System.IntPtr _l = LuaAPI.lua_touserdata(L, 1);
+                    System.IntPtr _L = LuaAPI.lua_touserdata(L, 1);
                     
-                        int gen_ret = XLua.LuaDLL.LuaBuildIn.LoadRapidJson( _l );
+                        int gen_ret = XLua.LuaDLL.LuaBuildIn.LoadRapidJson( _L );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
