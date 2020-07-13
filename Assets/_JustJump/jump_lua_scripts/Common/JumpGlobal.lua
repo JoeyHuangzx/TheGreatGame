@@ -9,7 +9,9 @@ Singleton=require 'Common.Singleton'
 EventMessager=require 'Common.EventMessager'
 ResourcesManager=require 'Common.ResourcesManager'
 
-TableHelper=require 'Common.TableHelper'
+TableHelper=require 'Common.Helpers.TableHelper'
+ColorHelper=require 'Common.Helpers.ColorHelper'
+StringHelper=require 'Common.Helpers.StringHelper'
 
 GameObjectExtends=require 'Common.Extends.GameObjectExtends'
 
