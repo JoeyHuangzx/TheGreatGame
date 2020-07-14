@@ -5,7 +5,11 @@ UIManager.windows = {}
 UIManager.currWindow = nil
 
 --UIManager.uiCanvas = nil
-
+PanelName={
+    LobbyPanel='LobbyPanel',
+    GamePanel='GamePanel',
+    GameOverPanel='GameOverPanel'
+}
 
 function UIManager:Init()
    -- print('UIManager Init...',self)
@@ -22,7 +26,7 @@ function UIManager:OpenPanel(panelName)
         panel=self:CreatePanel(panelName)
     end
     UIManager.currWindow = panel
-   -- print('curr:',UIManager.currWindow.name)
+    panel:OnEnable()
 end
 
 function UIManager:CreatePanel(panelName)

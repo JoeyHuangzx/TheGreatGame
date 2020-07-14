@@ -6,6 +6,7 @@ require 'Common.Enum'
 
 LuaUpdate=require 'Common.LuaUpdate'
 Singleton=require 'Common.Singleton'
+BaseComponent=require 'UI.BaseComponent'
 EventMessager=require 'Common.EventMessager'
 ResourcesManager=require 'Common.ResourcesManager'
 
@@ -15,6 +16,8 @@ StringHelper=require 'Common.Helpers.StringHelper'
 
 GameObjectExtends=require 'Common.Extends.GameObjectExtends'
 
+UIConfig=require 'UI.UIConfig'
 
 JumpGameController=require 'JumpGameController'
+UIManager=require 'UI.UIManager'
 CheeseSpawner=require 'CheeseSpawner'

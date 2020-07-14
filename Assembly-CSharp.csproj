@@ -362,7 +362,7 @@
     <Compile Include="Assets\XLua\Tutorial\LoadLuaScript\ByString\ByString.cs" />
     <Compile Include="Assets\XLua\Tutorial\LoadLuaScript\Loader\CustomLoader.cs" />
     <Compile Include="Assets\XLua\Tutorial\LuaCallCSharp\LuaCallCs.cs" />
-    <None Include="Assets\LuaScripts\UI\GamePanel.lua" />
+    <None Include="Assets\_JustJump\jump_lua_scripts\UI\GamePanel.lua" />
     <None Include="Assets\_JustJump\jump_lua_scripts\CheeseData.lua" />
     <None Include="Assets\XLua\Gen\link.xml" />
     <None Include="Assets\_JustJump\jump_lua_scripts\Common\Helpers\TableHelper.lua" />
@@ -373,6 +373,7 @@
     <None Include="Assets\XLua\Examples\07_AsyncTest\Resources\message_box.lua.txt" />
     <None Include="Assets\LuaScripts\Framework\Common\BaseClass.lua" />
     <None Include="Assets\XLua\Examples\06_Coroutine\Resources\cs_coroutine.lua.txt" />
+    <None Include="Assets\_JustJump\jump_lua_scripts\UI\BaseComponent.lua" />
     <None Include="Assets\LuaScripts\Global\Global.lua" />
     <None Include="Assets\XLua\Examples\02_U3DScripting\LuaTestScript.lua.txt" />
     <None Include="Assets\XLua\Examples\10_SignatureLoader\otherfiles\signatured1.lua" />
@@ -383,15 +384,14 @@
     <None Include="Assets\XLua\Examples\07_AsyncTest\Resources\async_test.lua.txt" />
     <None Include="Assets\XLua\Tutorial\LoadLuaScript\ByFile\Resources\byfile.lua.txt" />
     <None Include="Assets\LuaScripts\Global\Config.lua" />
-    <None Include="Assets\LuaScripts\UI\LobbyPanel.lua" />
+    <None Include="Assets\_JustJump\jump_lua_scripts\UI\LobbyPanel.lua" />
     <None Include="Assets\EasyTouchBundle\EasyTouchControls\ReleaseNotes.txt" />
     <None Include="Assets\XLua\Examples\03_UIEvent\ButtonInteraction.lua" />
-    <None Include="Assets\LuaScripts\Framework\UI\BaseComponent.lua" />
     <None Include="Assets\LuaScripts\_Test\DemoClass.lua" />
     <None Include="Assets\LuaScripts\Global\Util.lua" />
     <None Include="Assets\_JustJump\jump_lua_scripts\Common\JumpGlobal.lua" />
     <None Include="Assets\_JustJump\jump_lua_scripts\CheeseSpawner.lua" />
-    <None Include="Assets\LuaScripts\UI\UIConfig.lua" />
+    <None Include="Assets\_JustJump\jump_lua_scripts\UI\UIConfig.lua" />
     <None Include="Assets\XLua\Examples\06_Coroutine\Resources\coruntine_test.lua.txt" />
     <None Include="Assets\LuaScripts\GameLogic\EntityManager.lua" />
     <None Include="Assets\EasyTouchBundle\EasyTouchControls\Documentation\Version 2.0.txt" />
@@ -421,7 +421,7 @@
     <None Include="Assets\_JustJump\jump_lua_scripts\JumpBehaviour.lua" />
     <None Include="Assets\LuaScripts\Framework\GameLogic\Player.lua" />
     <None Include="Assets\_JustJump\jump_lua_scripts\LuaGameEntry.lua" />
-    <None Include="Assets\LuaScripts\UI\UIManager.lua" />
+    <None Include="Assets\_JustJump\jump_lua_scripts\UI\UIManager.lua" />
     <None Include="Assets\XLua\Note.txt" />
     <None Include="Assets\XLua\Examples\10_SignatureLoader\signatured2.lua" />
     <None Include="Assets\EasyTouchBundle\EasyTouchControls\Issues in button behavior (MAC).txt" />
@@ -439,7 +439,7 @@
     <None Include="Assets\XLua\CHANGELOG.txt" />
     <None Include="Assets\XLua\Resources\tdr\tdr.lua.txt" />
     <None Include="Assets\_JustJump\jump_lua_scripts\Common\BaseClass.lua" />
-    <None Include="Assets\LuaScripts\UI\GameOverPanel.lua" />
+    <None Include="Assets\_JustJump\jump_lua_scripts\UI\GameOverPanel.lua" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>G:/UnityProject/TheGreatGame/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

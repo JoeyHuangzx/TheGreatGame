@@ -13,25 +13,17 @@ end
 function LobbyPanel:Awake()
     self.base.Awake()
     --  print(panelName, ' this is Awake function', self.gameObject.name)
-    self.playBtn = ObjectUtil:FindGameObject('playBtn', self.transform)
-    self.skinBtn = ObjectUtil:FindGameObject('skinBtn', self.transform)
-    self.musicBtn = ObjectUtil:FindGameObject('musicBtn', self.transform)
-    self:Start()
+   
 end
 
 function LobbyPanel:OnCreate(gameObject)
     self.gameObject = gameObject
     self.transform = gameObject.transform
-    if self.gameObject ~= nil then
-        self.gameObject:SetActive(true)
-        self:Awake()
-    else
-        assert(self.gameObject, 'the gameobject is null')
-    end
+  
 end
 
 function LobbyPanel:OnEnable()
-    self:Awake()
+    print(self.gameObject)
     -- print(panelName, ' LobbyPanel this is OnEnable function')
 end
 
@@ -42,7 +34,7 @@ end
 
 function LobbyPanel:Start()
     --  print(panelName, '  this is Start function')
-    self:AddListener()
+   
 end
 
 function LobbyPanel:SetActive(enable)
