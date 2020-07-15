@@ -5,6 +5,9 @@
  * 说明：
  */
 using System;
+using System.IO;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using XLua;
@@ -57,6 +60,22 @@ public class XLuaUtils
             }
         }
         return obj;
+    }
+
+    public static string[] GetObjectNameWithFile(string path)
+    {
+        DirectoryInfo dirInfo = new DirectoryInfo(path);
+        List<string> arr = new List<string>();
+        foreach(FileInfo next in dirInfo.GetFiles())
+        {
+            if(next.Extension==".prefab")
+            {
+                arr.Add(next.Name.Split('.')[0]);
+            }
+        }
+        
+        return arr.ToArray();
+        
     }
 }
 

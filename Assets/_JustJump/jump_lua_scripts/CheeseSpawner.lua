@@ -9,6 +9,7 @@ function CheeseSpawner:Initialize()
     self.cheesePrefabs={}
     self.cheeseEnemiesPrefabs={}
     self.pillar=GameObject.Find('Pillar')
+    self.diamondPrefab=ResourcesManager.Load('Prefab/Coin')
     self.initialYSpawn=0
     self.distanceBetweenCheese=0
     self.initailCheese=0
@@ -63,17 +64,30 @@ function CheeseSpawner:InitData()
     self.pressedPos=Vector3.zero
     self.actualPos=Vector3.zero
 
+    local objNames=CS.XLuaUtils.GetObjectNameWithFile('Assets/_JustJump/Resources/Cheeses')
+    print(objNames.Length)
+    for i = 0, objNames.Length-1 do
+        local obj=ResourcesManager.Load('Cheeses/'..objNames[i])
+        table.insert(self.serialObj,obj)
+       -- print(self.serialObj[i+1])
+    end
 end
+
 
 function CheeseSpawner:Update(self)
     if self.transform.childCount<self.initailCheese and self.isSpawnComplete==false then
         if self.SpawnCount<self.initSpawnCount then
-
             self.SpawnCount=self.SpawnCount+1
         else
             self.isSpawnComplete=true
         end
     end
+end
+
+function CheeseSpawner:Reset()
+    self.currLoopLevel=0
+    self.SpawnCount=0
+    self.isSpawnComplete=false
 end
 
 function CheeseSpawner:AddInitSpawnCount()
@@ -117,8 +131,8 @@ function CheeseSpawner:SpawnCheese(spawnPos,isEnd)
         end
 
         local diamondParnet=nil
-        local diamond=Object.Instantiate(diamondParnet,diamondParnet.parent)
-        diamond.transform.position=diamondParnet.parent.right*1.7
+        local diamond=Object.Instantiate(self.diamondPrefab,diamondParnet.parent)
+        diamond.transform.position=diamondParnet.parent.right*1.7-diamondParnet.parent.forward*0.5+cheeseInstance.transform.position+Vector3(0,0.5,0)
     end
     
     self.diamondCount=self.diamondCount+1

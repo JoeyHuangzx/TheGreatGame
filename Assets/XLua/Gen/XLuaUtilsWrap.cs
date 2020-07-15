@@ -31,9 +31,10 @@ namespace XLua.CSObjectWrap
 			Utils.EndObjectRegister(type, L, translator, null, null,
 			    null, null, null);
 
-		    Utils.BeginClassRegister(type, L, __CreateInstance, 3, 0, 0);
+		    Utils.BeginClassRegister(type, L, __CreateInstance, 4, 0, 0);
 			Utils.RegisterFunc(L, Utils.CLS_IDX, "CallFunction", _m_CallFunction_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GetGameObjectByName", _m_GetGameObjectByName_xlua_st_);
+            Utils.RegisterFunc(L, Utils.CLS_IDX, "GetObjectNameWithFile", _m_GetObjectNameWithFile_xlua_st_);
             
 			
             
@@ -141,6 +142,33 @@ namespace XLua.CSObjectWrap
             }
             
             return LuaAPI.luaL_error(L, "invalid arguments to XLuaUtils.GetGameObjectByName!");
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_GetObjectNameWithFile_xlua_st_(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+            
+                
+                {
+                    string _path = LuaAPI.lua_tostring(L, 1);
+                    
+                        string[] gen_ret = XLuaUtils.GetObjectNameWithFile( _path );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
             
         }
         
