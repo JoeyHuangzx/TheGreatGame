@@ -40,7 +40,6 @@ function JumpGameController:Initialize()
     self:FunInsert(self.testTable,self.SetPause)
     self:FunInsert(self.testTable,self.SetGameOver)
 
-    self:SetMenu()
 end
 
 function JumpGameController:FunInsert(tb,cb)
@@ -57,6 +56,7 @@ function JumpGameController:SetMenu()
 end
 
 function JumpGameController:SetGaming()
+    UIManager:GetInstance():OpenPanel(PanelName.GamePanel)
     print('set Gaming')
 end
 
@@ -65,6 +65,7 @@ function JumpGameController:SetPause()
 end
 
 function JumpGameController:SetGameOver()
+    UIManager:GetInstance():OpenPanel(PanelName.GameOverPanel)
     print('set GameOver')
 end
 

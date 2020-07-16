@@ -13,6 +13,7 @@ ResourcesManager=require 'Common.ResourcesManager'
 TableHelper=require 'Common.Helpers.TableHelper'
 ColorHelper=require 'Common.Helpers.ColorHelper'
 StringHelper=require 'Common.Helpers.StringHelper'
+ObjectUtil=require 'Common.Helpers.ObjectUtil'
 
 GameObjectExtends=require 'Common.Extends.GameObjectExtends'
 

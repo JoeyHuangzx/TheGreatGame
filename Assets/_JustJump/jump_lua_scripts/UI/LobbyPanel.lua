@@ -1,9 +1,5 @@
 LobbyPanel = BaseClass('LobbyPanel', BaseComponent)
 
---local playBtn = nil
---local skinBtn = nil
---local musicBtn = nil
---local panelPath = 'Canvas/LobbyPanel'
 
 function LobbyPanel:constructor(params)
     self.base = LobbyPanel.base
@@ -19,11 +15,13 @@ end
 function LobbyPanel:OnCreate(gameObject)
     self.gameObject = gameObject
     self.transform = gameObject.transform
-  
+    self.playBtn=ObjectUtil:FindComponentsWithTran('playBtn',self.gameObject)
+    self.logo=ObjectUtil:FindComponentsWithTran('logo',self.gameObject)
+    self.coinTxt=ObjectUtil:FindComponentsWithTran('coinTxt',self.gameObject)
 end
 
 function LobbyPanel:OnEnable()
-    print(self.gameObject)
+    self.gameObject:SetActive(true)
     -- print(panelName, ' LobbyPanel this is OnEnable function')
 end
 
@@ -44,14 +42,11 @@ end
 function LobbyPanel:AddListener()
     print(self)
     self:OnClick(self.playBtn, self.PlayClick)
-    self:OnClick(self.skinBtn, self.SkinClick)
-    self:OnClick(self.musicBtn, self.MusicClick)
 end
 
 function LobbyPanel:PlayClick(obj)
     print('click play game', self, obj)
-    UIManager:GetInstance():OpenPanel('GamePanel')
-    EventMessager:DispatchEvent('StartGame')
+    JumpGameController:ChangeGameState(GameState.GAME)
 end
 
 function LobbyPanel:SkinClick(obj)

@@ -10,7 +10,7 @@ function ObjectUtil:FindGameObject(_name, _parent)
 end
 
 -- transform.find 查找
-function ObjectUtil:TranFindComponents(_name, _parent)
+function ObjectUtil:FindComponentsWithTran(_name, _parent)
     local transList = _parent:GetComponentsInChildren(typeof(CS.UnityEngine.Transform),true)
     local target = nil
      print(transList,transList.Length)

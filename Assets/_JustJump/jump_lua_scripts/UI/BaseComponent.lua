@@ -28,9 +28,9 @@ function BaseComponent:OnClick(obj,_callback)
     end)
 end
 
-----BaseComponent.Awake=Awake
---BaseComponent.constructor=constructor
---BaseComponent.Enable=Enable
---BaseComponent.Start=Start
+function BaseComponent:FindSubObj()
+    
+end
+
 
 return BaseComponent

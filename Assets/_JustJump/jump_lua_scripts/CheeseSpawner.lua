@@ -107,6 +107,7 @@ function CheeseSpawner:SpawnCheese(spawnPos,isEnd)
     local len=TableHelper:TableLen(self.levelCheeseMap[a])
     local b=CS.UnityEngine.Random.Range(0,len)
     self.currLoopLevel=self.currLoopLevel+1
+    
     if self.currLoopLevel>=TableHelper:TableLen(self.levels) then
         self.currLoopLevel=0
         self.levels={}
