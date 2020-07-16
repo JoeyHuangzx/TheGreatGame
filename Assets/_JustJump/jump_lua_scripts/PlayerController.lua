@@ -6,6 +6,10 @@ function PlayerController:constructor()
 end
 
 function PlayerController:OnCreate()
+    
+end
+
+function PlayerController:Initialize()
     self.rigidBody=nil
     self.bounceForce=0.1
     self.tumble=10
@@ -19,10 +23,6 @@ function PlayerController:OnCreate()
     self.meshRenderer=nil
     self.currColor=nil
     self.trailRenderer=nil
-end
-
-function PlayerController:Initialize()
-    
 end
 
 return PlayerController

@@ -43,16 +43,26 @@ function CheeseSpawner:InitData()
     self.CurrEnemyCheeseColor=self.EnemyCheeseColors[1]
     self.CurrNormalCheeseColor=self.NormalCheeseColors[1]
 
+    -- 把resources的cheese资源加载到数组
+    local objNames=CS.XLuaUtils.GetObjectNameWithFile('Assets/_JustJump/Resources/Cheeses')
+    print(objNames.Length)
+    for i = 0, objNames.Length-1 do
+        local obj=ResourcesManager.Load('Cheeses/'..objNames[i])
+        table.insert(self.serialObj,obj)
+       -- print(self.serialObj[i+1])
+    end
+    -- ---------------------------------------
     self.levelCheeseMap[1]={}
     self.levelCheeseMap[2]={}
     self.levelCheeseMap[3]={}
-    for i = 1, 100 do
+    for i = 1, TableHelper:TableLen(self.serialObj) do
+        
         if i%3==0 then
-            table.insert(self.levelCheeseMap[1],i)
+            table.insert(self.levelCheeseMap[1],self.serialObj[i])
         elseif i%3==2 then
-            table.insert(self.levelCheeseMap[2],i)
+            table.insert(self.levelCheeseMap[2],self.serialObj[i])
         else
-            table.insert(self.levelCheeseMap[3],i)
+            table.insert(self.levelCheeseMap[3],self.serialObj[i])
         end
     end
 
@@ -64,13 +74,7 @@ function CheeseSpawner:InitData()
     self.pressedPos=Vector3.zero
     self.actualPos=Vector3.zero
 
-    local objNames=CS.XLuaUtils.GetObjectNameWithFile('Assets/_JustJump/Resources/Cheeses')
-    print(objNames.Length)
-    for i = 0, objNames.Length-1 do
-        local obj=ResourcesManager.Load('Cheeses/'..objNames[i])
-        table.insert(self.serialObj,obj)
-       -- print(self.serialObj[i+1])
-    end
+   
 end
 
 

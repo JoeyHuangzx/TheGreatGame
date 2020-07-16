@@ -17,14 +17,6 @@ PanelType={
 
 JumpGameController = BaseClass('JumpGameController', Singleton)
 
--- ++++++ data ++++++ --
-JumpGameController.score = 6
-JumpGameController.bestScore = 1
-JumpGameController.coins = 9
-
--- ++++++++++++++++++++++ --
-
--- ++++++++++++++++++++++ --
 
 JumpGameController.gameState = GameState.GAME
 JumpGameController.mainCamera=nil
@@ -33,6 +25,9 @@ JumpGameController.mainCamera=nil
 
 function JumpGameController:Initialize()
     self.mainCamera=CS.UnityEngine.Camera.main
+    self.score=1
+    self.bestScore=1
+    self.coins=0
     UIManager:GetInstance():Init()
     self.testTable={}
     self:FunInsert(self.testTable,self.SetMenu)
