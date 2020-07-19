@@ -12,6 +12,7 @@ function LuaGameEntry:Start()
 end
 
 function InitManager()
+    EntityComponentManager:GetInstance():Initialize()
     JumpGameController:GetInstance():Initialize()
     CheeseSpawner:GetInstance():Initialize()
 end

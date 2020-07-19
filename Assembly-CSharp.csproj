@@ -367,7 +367,7 @@
     <None Include="Assets\_JustJump\jump_lua_scripts\CheeseData.lua" />
     <None Include="Assets\XLua\Gen\link.xml" />
     <None Include="Assets\_JustJump\jump_lua_scripts\Common\Helpers\TableHelper.lua" />
-    <None Include="Assets\LuaScripts\GameLogic\BaseEntity.lua" />
+    <None Include="Assets\_JustJump\jump_lua_scripts\GameLogic\BaseEntity.lua" />
     <None Include="Assets\LuaScripts\Framework\Common\Singleton.lua" />
     <None Include="Assets\_JustJump\jump_lua_scripts\Common\Helpers\StringHelper.lua" />
     <None Include="Assets\_JustJump\jump_lua_scripts\Common\LuaUpdate.lua" />
@@ -381,7 +381,7 @@
     <None Include="Assets\LuaScripts\LuaGameEntry.lua" />
     <None Include="Assets\XLua\Examples\10_SignatureLoader\signatured1.lua" />
     <None Include="Assets\_JustJump\jump_lua_scripts\Common\EventMessager.lua" />
-    <None Include="Assets\LuaScripts\GameLogic\EntityConfig.lua" />
+    <None Include="Assets\_JustJump\jump_lua_scripts\GameLogic\EntityConfig.lua" />
     <None Include="Assets\XLua\Examples\07_AsyncTest\Resources\async_test.lua.txt" />
     <None Include="Assets\XLua\Tutorial\LoadLuaScript\ByFile\Resources\byfile.lua.txt" />
     <None Include="Assets\LuaScripts\Global\Config.lua" />
@@ -396,12 +396,12 @@
     <None Include="Assets\_JustJump\jump_lua_scripts\CheeseSpawner.lua" />
     <None Include="Assets\_JustJump\jump_lua_scripts\UI\UIConfig.lua" />
     <None Include="Assets\XLua\Examples\06_Coroutine\Resources\coruntine_test.lua.txt" />
-    <None Include="Assets\LuaScripts\GameLogic\EntityManager.lua" />
+    <None Include="Assets\_JustJump\jump_lua_scripts\GameLogic\EntityManager.lua" />
     <None Include="Assets\EasyTouchBundle\EasyTouchControls\Documentation\Version 2.0.txt" />
     <None Include="Assets\LuaScripts\Common\MathTool.lua" />
-    <None Include="Assets\LuaScripts\GameLogic\Camera.lua" />
+    <None Include="Assets\_JustJump\jump_lua_scripts\GameLogic\Camera.lua" />
     <None Include="Assets\XLua\Resources\xlua\util.lua.txt" />
-    <None Include="Assets\LuaScripts\GameLogic\Board.lua" />
+    <None Include="Assets\_JustJump\jump_lua_scripts\GameLogic\Board.lua" />
     <None Include="Assets\EasyTouchBundle\EasyTouch\_Documentation\How to migrate from EasyTouch 4.X.txt" />
     <None Include="Assets\_JustJump\jump_lua_scripts\Common\Singleton.lua" />
     <None Include="Assets\XLua\LuaStudy.lua" />
@@ -411,7 +411,7 @@
     <None Include="Assets\LuaScripts\Framework\Common\EventMessager.lua" />
     <None Include="Assets\Scenes\场景预计笔记.txt" />
     <None Include="Assets\XLua\Examples\03_UIEvent\ButtonInteraction.lua.txt" />
-    <None Include="Assets\LuaScripts\GameLogic\Ball.lua" />
+    <None Include="Assets\_JustJump\jump_lua_scripts\GameLogic\Ball.lua" />
     <None Include="Assets\_JustJump\jump_lua_scripts\JumpGameController.lua" />
     <None Include="Assets\LuaScripts\Framework\Common\LuaUpdate.lua" />
     <None Include="Assets\LuaScripts\Framework\Common\OverWriteG.lua" />
@@ -436,6 +436,7 @@
     <None Include="Assets\XLua\Examples\10_SignatureLoader\signatured3.lua" />
     <None Include="Assets\LuaScripts\Framework\Common\ResourcesManager.lua" />
     <None Include="Assets\XLua\Examples\10_SignatureLoader\otherfiles\signatured3.lua" />
+    <None Include="Assets\_JustJump\jump_lua_scripts\Entitys\EntityComponentManager.lua" />
     <None Include="Assets\_JustJump\jump_lua_scripts\Common\ResourcesManager.lua" />
     <None Include="Assets\EasyTouchBundle\EasyTouch\How to migrate from EasyTouch 4.X.txt" />
     <None Include="Assets\Game_Resources\Shaders\UI-Default-Radius.shader" />

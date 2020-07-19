@@ -1,7 +1,7 @@
 EntityManager = BaseClass('EntityManager', Singleton)
 
 function EntityManager:Init()
-    local camera = EntityConfig.Camera.New()
+   --[[  local camera = EntityConfig.Camera.New()
     camera:OnCreate()
 
     local gameOBj=GameObject.Find('Game').transform
@@ -25,8 +25,7 @@ function EntityManager:Init()
     end
 
     camera:SetFollow(ball)
-    UIManager.windows['LobbyPanel']:SetActive(false)
-    -- print('ball name:',ball.name,',board name:',board.name)
+    UIManager.windows['LobbyPanel']:SetActive(false) ]]
 end
 
 function EntityManager:CreateCamera()

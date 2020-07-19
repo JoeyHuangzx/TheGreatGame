@@ -17,8 +17,12 @@ ObjectUtil=require 'Common.Helpers.ObjectUtil'
 
 GameObjectExtends=require 'Common.Extends.GameObjectExtends'
 
-UIConfig=require 'UI.UIConfig'
+LuaUpdate=require 'Common.LuaUpdate'
 
+UIConfig=require 'UI.UIConfig'
+EntityConfig=require 'GameLogic.EntityConfig'
+
+EntityComponentManager=require 'Entitys.EntityComponentManager'
 JumpGameController=require 'JumpGameController'
 UIManager=require 'UI.UIManager'
 CheeseSpawner=require 'CheeseSpawner'

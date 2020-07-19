@@ -1,12 +1,15 @@
 
-local PlayerController=BaseClass('PlayerController')
+local PlayerController=BaseClass('PlayerController',LuaUpdate)
 
 function PlayerController:constructor()
     
 end
 
-function PlayerController:OnCreate()
-    
+function PlayerController:OnCreate(_gameObject)
+    self.gameObject=_gameObject
+    self.transform=_gameObject.transform
+
+    self:Initialize()
 end
 
 function PlayerController:Initialize()
@@ -23,6 +26,25 @@ function PlayerController:Initialize()
     self.meshRenderer=nil
     self.currColor=nil
     self.trailRenderer=nil
+end
+
+function PlayerController:OnCreate()
+    self.meshRenderer=self.gameObject:GetComponent(typeof(CS.UnityEngine.MeshRenderer))
+    self:RandomMat()
+    self.initialPosition=self.transform.position
+end
+
+function PlayerController:OnEnable()
+    
+end
+
+function PlayerController:Update()
+    
+end
+
+
+function PlayerController:RandomMat()
+    
 end
 
 return PlayerController
