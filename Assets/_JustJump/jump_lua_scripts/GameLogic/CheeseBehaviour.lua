@@ -85,7 +85,7 @@ end
 
 function ThrowPart(cheesePart)
     local rigid=cheesePart:getComponent(typeof(CS.UnityEngine.MeshCollider))
-    local dir=cheesePart:getComponent(typeof(MeshCollider)).bounds.center-self.transform.position
+    local dir=cheesePart:getComponent(typeof(CS.UnityEngine.MeshCollider)).bounds.center-self.transform.position
     rigid:AddForce(dir*self.forceMagnitude)
 end
 

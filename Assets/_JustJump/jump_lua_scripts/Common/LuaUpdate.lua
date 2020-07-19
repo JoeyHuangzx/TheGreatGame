@@ -5,6 +5,7 @@ LuaUpdate.FixedUpdateHandler = nil
 LuaUpdate.LateUpdateHandler = nil
 local Timer = 0
 
+
 function LuaUpdate:EnableUpdate(_enable)
     if _enable == true then
      --   print('start update', self)
@@ -25,7 +26,7 @@ function LuaUpdate:Start()
     --  print('luaupdate start...')
 end
 
-
+--[[ !!!不允许其他地方有同样的Update全局函数 ]]
 function Update()
     --  Timer=Timer+LuaUpdate.fixedDeltaTime
     Timer=Timer+LuaUpdate.fixedDeltaTime

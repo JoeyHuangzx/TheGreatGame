@@ -27,9 +27,6 @@ function HomeHandle()
     UIManager.OpenPanel('LobbyPanel')
 end
 
-function Update()
-    -- print("this is Update function")
-end
 
 function OnDestroy()
     print('this is OnDestroy function')

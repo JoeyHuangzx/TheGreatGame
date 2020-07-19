@@ -6,16 +6,18 @@ function TableHelper:TableLen(t)
     for key, value in ipairs(t) do
         len=len+1
     end
-    return len
+    return len  
 end
 
 
 -- 查看某值是否为表tbl中的key值
 function TableHelper:HasKey(tbl, key)
     if tbl == nil then
+        print('haskey warn:the table is nil')
         return false
     end
     for k, v in pairs(tbl) do
+        print(k,key,k==key,type(k),type(key))
         if k == key then
             return true
         end

@@ -5,6 +5,7 @@ require 'Common.BaseClass'
 require 'Common.Enum'
 
 LuaUpdate=require 'Common.LuaUpdate'
+ColliderAndTriggerFun=require 'Common.Helpers.ColliderAndTriggerFun'
 Singleton=require 'Common.Singleton'
 BaseComponent=require 'UI.BaseComponent'
 EventMessager=require 'Common.EventMessager'
@@ -17,7 +18,7 @@ ObjectUtil=require 'Common.Helpers.ObjectUtil'
 
 GameObjectExtends=require 'Common.Extends.GameObjectExtends'
 
-LuaUpdate=require 'Common.LuaUpdate'
+
 
 UIConfig=require 'UI.UIConfig'
 EntityConfig=require 'GameLogic.EntityConfig'

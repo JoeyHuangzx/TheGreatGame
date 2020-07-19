@@ -20,6 +20,7 @@ public class LuaUpdate : MonoBehaviour
 
     public void AddUpdate(LuaEnv luaEnv)
     {
+        Debug.Log("Add  Update----");
         update = luaEnv.Global.Get<Action>("Update");
         fixedUpdate= luaEnv.Global.Get<Action<float>>("FixedUpdate");
         lateUpdate=luaEnv.Global.Get<Action>("LateUpdate");

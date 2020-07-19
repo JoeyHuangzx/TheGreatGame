@@ -78,12 +78,10 @@ public class XLuaManager : MonoSingleton<XLuaManager>
     {
         if (luaEnv != null)
         {
-            gameObject.GetComponent<LuaUpdate>().AddUpdate(luaEnv);
+            
             loadScript(luaGameEntryScript);
             DoString("LuaGameEntry.Start()");
-            
-
-            
+            gameObject.GetComponent<LuaUpdate>().AddUpdate(luaEnv);
         }
     }
 
