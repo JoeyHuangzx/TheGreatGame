@@ -40,7 +40,7 @@ function LobbyPanel:SetActive(enable)
 end
 
 function LobbyPanel:AddListener()
-   -- print(self)
+    print(self)
     self:OnClick(self.playBtn, self.PlayClick)
 end
 

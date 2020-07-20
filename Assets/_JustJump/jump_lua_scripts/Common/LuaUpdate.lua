@@ -5,20 +5,16 @@ LuaUpdate.FixedUpdateHandler = nil
 LuaUpdate.LateUpdateHandler = nil
 local Timer = 0
 
-
 function LuaUpdate:EnableUpdate(_enable)
     if _enable == true then
-     --   print('start update', self)
-        if LuaUpdate.UpdateTable==nil then
+        --   print('start update', self)
+        if LuaUpdate.UpdateTable == nil then
             LuaUpdate.UpdateTable = {}
         end
-        
+
         if self.Update ~= nil then
             table.insert(LuaUpdate.UpdateTable, {callback = self.Update, target = self})
         end
-    -- LuaUpdate.UpdateHandler = self.Update or nil
-    --LuaUpdate.LateUpdateHandler = self.LateUpdate or nil
-    --LuaUpdate.FixedUpdateHandler = self.FixedUpdate or nil
     end
 end
 
@@ -29,20 +25,16 @@ end
 --[[ !!!不允许其他地方有同样的Update全局函数 ]]
 function Update()
     --  Timer=Timer+LuaUpdate.fixedDeltaTime
-    Timer=Timer+LuaUpdate.fixedDeltaTime
-    --if Timer>0.02 then
-    --    Timer=0
-        if LuaUpdate.UpdateTable ~= nil then
-            for key, value in pairs(LuaUpdate.UpdateTable) do
-          --      print(key, value, value.callback, value.target.name)
-                if value.callback~=nil then
-                    value.callback(value.target)
-                end
+    Timer = Timer + LuaUpdate.fixedDeltaTime
+
+    if LuaUpdate.UpdateTable ~= nil then
+        for key, value in pairs(LuaUpdate.UpdateTable) do
+            --      print(key, value, value.callback, value.target.name)
+            if value.callback ~= nil then
+                value.callback(value.target)
             end
         end
-   -- end
-    
-   
+    end
 end
 
 function FixedUpdate(deltaTime)

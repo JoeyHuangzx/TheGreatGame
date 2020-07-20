@@ -22,12 +22,15 @@ public class PlayerCollider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision);
+
         onCollisionEnter?.Invoke(collision);
     }
 

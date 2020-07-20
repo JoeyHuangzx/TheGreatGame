@@ -32,7 +32,7 @@ function CheeseSpawner:Initialize()
     self.serialObj = {}
     self.levelCheeseMap = {}
 
-    self.angleModifier=0
+    self.angleModifier=0.9
 
     self.levelStr =
         '1,1,2,1,1,2,1,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,2,1,2,2,1,2,2,1,2,2,1,2,2,1,2,2,1,2,2,1,2,2,1,2,2,1,2,3,1,2,2,1,2,3,1,2,2,1,2,3,1,2,2,1,2,3,1,2,3,2,2,3,1,2,3,2,2,3,1,2,3,2,2,3,1,2,3,2,2,3'
@@ -88,19 +88,24 @@ function CheeseSpawner:Update()
             self.isSpawnComplete = true
         end
     end
+
+    if CS.UnityEngine.Time.realtimeSinceStartup>5.0 then
+        self:ControllerRotation()
+    end
 end
 
 function CheeseSpawner:ControllerRotation()
+  
     if Input:GetMouseButtonDown(0) then
         self.pressedPos=Input.mousePosition
         self.actualPos=self.pressedPos
-    elseif Input.GetMouseButton(0) then
+    elseif Input:GetMouseButton(0) then
         self.actualPos=Input.mousePosition
         local angle=self.pressedPos.x-self.actualPos.x
         angle=angle*self.angleModifier
         self.transform:Rotate(Vector3(0,angle,0))
         self.pressedPos=self.actualPos
-    elseif Input.GetMouseButtonUp(0) then
+    elseif Input:GetMouseButtonUp(0) then
         self.pressedPos=self.actualPos
     end
 end

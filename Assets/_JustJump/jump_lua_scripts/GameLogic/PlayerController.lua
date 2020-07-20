@@ -9,13 +9,15 @@ function PlayerController:OnCreate()
     
     self.gameObject=GameObjectExtends.CreateObjWithName('Player')
     self.transform=self.gameObject.transform
-
-  --  self:Initialize()
+    self.transform.localScale=Vector3(0.5,0.5,0.5)
+    self.transform.localPosition=Vector3(2.022,1.0,-0.53)
+    self:Initialize()
 end
 
 function PlayerController:InitializeProperty()
-    self.rigidBody=nil
-    self.bounceForce=0.1
+   -- print(self.gameObject:GetComponent(typeof(CS.UnityEngine.Rigidbody)))
+    self.rigidBody=self.gameObject:GetComponent(typeof(CS.UnityEngine.Rigidbody))
+    self.bounceForce=6
     self.tumble=10
     self.particle=nil
     self.initialPosition=Vector3.zero
@@ -30,11 +32,11 @@ function PlayerController:InitializeProperty()
 end
 
 function PlayerController:Initialize()
-    self.InitializeProperty()
-
-    self.meshRenderer=self.gameObject:GetComponent(typeof(CS.UnityEngine.MeshRenderer))
-    self:RandomMat()
-    self.initialPosition=self.transform.position
+    self:InitializeProperty()
+    self:OnEnable()
+   -- self.meshRenderer=self.gameObject:GetComponent(typeof(CS.UnityEngine.MeshRenderer))
+   -- self:RandomMat()
+    --self.initialPosition=self.transform.position
     self.gameObject:GetComponent(typeof(CS.UnityEngine.Rigidbody)).angularVelocity=1 -- CS.UnityEngine.Random.Range(0,len)
 end
 
@@ -43,7 +45,12 @@ function PlayerController:Resurrection(arg1, arg2, arg3)
 end
 
 function PlayerController:OnEnable()
-    
+    ColliderAndTriggerFun.EnableCollision(self,true)
+end
+
+function PlayerController:OnCollisionEnter()
+    print('player OnCollisionEnter')
+    self:Bounce()
 end
 
 function PlayerController:Update()
@@ -59,6 +66,11 @@ function PlayerController:PlayParticle()
 end
 
 function PlayerController:Bounce()
+    if self.rigidBody==nil then
+        print('the rigidBody is null')
+        return
+    end
+    self.rigidBody.velocity=Vector3.up*self.bounceForce
     
 end
 
