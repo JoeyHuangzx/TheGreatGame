@@ -1,35 +1,36 @@
 
-local CheeseBehaviour=BaseClass('CheeseBehaviour',LuaUpdate)
+local Cheese=BaseClass('Cheese',LuaUpdate)
 
 
-function CheeseBehaviour:constructor()
+function Cheese:constructor()
     
 end
 
-function CheeseBehaviour:OnCreate()
-    self.gameObject=nil
-    self.transform=nil
+function Cheese:OnCreate(_gameObject)
+    self.gameObject=_gameObject
+    self.transform=_gameObject.transform
     self.forceMagnitude=0
     self.didExplode=false
     self.Level=1
     self.playerObj=nil
 end
 
-function CheeseBehaviour:OnEnable()
+function Cheese:OnEnable()
     self:EnableUpdate(true)
 end
 
-function CheeseBehaviour:FixedUpdate()
+function Cheese:FixedUpdate()
     if self.didExplode==false then
         return
     end
     if self.playerObj.position.y<self.transform.position.y-0.5 and self.didExplode==false then
-        
+        self:Explode()
+        self.didExplode=true
     end
     
 end
 
-function  CheeseBehaviour:GetDiamonPos()
+function Cheese:GetDiamonPos()
     local cheeseList={}
     for i = 0, self.transform.childCount do
         local _child=self.transform:GetChild(i):GetChild(0)
@@ -43,7 +44,7 @@ function  CheeseBehaviour:GetDiamonPos()
     cheeseList=nil
 end
 
-function CheeseBehaviour:Explode()
+function Cheese:Explode()
     self.didExplode=true
     self.transform.parent=nil
     self:ManageScore()
@@ -53,13 +54,13 @@ function CheeseBehaviour:Explode()
     self:SplitCheese()
 end
 
-function CheeseBehaviour:ManageScore()
+function Cheese:ManageScore()
     -- statements
     local cheeseCombo=0
     JumpGameController:GetInstance().score=JumpGameController:GetInstance().score+(2*cheeseCombo)
 end
 
-function CheeseBehaviour:AddRigidbodies()
+function Cheese:AddRigidbodies()
     for i = 0, self.transform.childCount do
         if self.transform:GetChild(i).childCount>0 then
             self.transform:GetChild(i):GetChild(0).gameObject:addComponent(typeof(CS.UnityEngine.Rigidbody));
@@ -67,7 +68,7 @@ function CheeseBehaviour:AddRigidbodies()
     end
 end
 
-function CheeseBehaviour:DisableMeshColliders(params)
+function Cheese:DisableMeshColliders(params)
     for i = 0, self.transform.childCount do
         if self.transform:GetChild(i).childCount>0 then
             self.transform:GetChild(i):GetChild(0).gameObject:getComponent(typeof(CS.UnityEngine.MeshCollider)).isTrigger=true
@@ -75,7 +76,7 @@ function CheeseBehaviour:DisableMeshColliders(params)
     end
 end
 
-function CheeseBehaviour:SplitCheese(params)
+function Cheese:SplitCheese(params)
     for i = 0, self.transform.childCount do
         if self.transform:GetChild(i).childCount>0 then
             self:ThrowPart(self.transform:GetChild(i):GetChild(0))
@@ -83,10 +84,10 @@ function CheeseBehaviour:SplitCheese(params)
     end
 end
 
-function ThrowPart(cheesePart)
+function Cheese:ThrowPart(cheesePart)
     local rigid=cheesePart:getComponent(typeof(CS.UnityEngine.MeshCollider))
     local dir=cheesePart:getComponent(typeof(CS.UnityEngine.MeshCollider)).bounds.center-self.transform.position
     rigid:AddForce(dir*self.forceMagnitude)
 end
 
-return CheeseBehaviour
+return Cheese

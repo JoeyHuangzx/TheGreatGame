@@ -17,7 +17,7 @@ function TableHelper:HasKey(tbl, key)
         return false
     end
     for k, v in pairs(tbl) do
-        print(k,key,k==key,type(k),type(key))
+        --print(k,key,k==key,type(k),type(key))
         if k == key then
             return true
         end

@@ -73,7 +73,9 @@ function CheeseSpawner:InitData()
     self.actualPos = Vector3.zero
 
     LuaUpdate.EnableUpdate(self, true)
+
 end
+
 
 function CheeseSpawner:Update()
   --  print('update......',self.transform.childCount < self.initailCheese,self.isSpawnComplete)
@@ -83,9 +85,15 @@ function CheeseSpawner:Update()
             
             self.SpawnCount = self.SpawnCount + 1
             self:SpawnCheese(self:GetSpawningPosition())
+            print(self.SpawnCount,self.initSpawnCount)
+            if self.SpawnCount==7 then
+                EntityComponentManager:GetInstance():LogTest()
+            end
         else
             self:SpawnCheese(self:GetSpawningPosition(),true)
+            print('true..............')
             self.isSpawnComplete = true
+            
         end
     end
 
@@ -159,7 +167,7 @@ function CheeseSpawner:SpawnCheese(spawnPos, isEnd)
             --print(self.levelCheeseMap[a][b],',a:',a,',b:',b)
     end
     local cheeseInstance = Object.Instantiate(self.levelCheeseMap[a][b], spawnPos, CheeseRotation, self.transform)
-
+    EntityComponentManager:GetInstance():CreateCheese(cheeseInstance)
     --[[ if self.diamondCount % 5 == 0 then
         if self.diamondCount == 0 then
             self.diamondCount = self.diamondCount + 1

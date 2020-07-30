@@ -45,6 +45,7 @@ function PlayerController:Resurrection(arg1, arg2, arg3)
 end
 
 function PlayerController:OnEnable()
+    self:EnableUpdate(true)
     ColliderAndTriggerFun.EnableCollision(self,true)
 end
 
