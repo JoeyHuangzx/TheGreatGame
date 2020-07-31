@@ -25,18 +25,35 @@ function EntityComponentManager:CreateCamera()
     self.Camera:SetFollow(self.Player.gameObject)
 end
 
-function EntityComponentManager:CreateCheese()
+function EntityComponentManager:CreateCheese(_gameObject)
+    local cheese=EntityConfig['Cheese'].New()
+    self:IsValid(cheese)
+    cheese:OnCreate(_gameObject)
+    self:InsertEntity('Cheese',cheese)
     
 end
 
-function EntityComponentManager:InsertEntity(_entity,_scriptList)
-    if TableHelper:HasKey(self.entityTable,_entity) then
-        self.entityTable[_entity]=_scriptList
+function EntityComponentManager:LogTest()
+    print('log.......')
+    for key, value in pairs(self.entityTable) do
+        print('entityTB--k:',key,',v:',value)
+        for scriptName,script in pairs(value) do
+            print('name:',scriptName,',script:',script)
+        end
     end
 end
 
+function EntityComponentManager:InsertEntity(_entityName,_scriptName,_script)
+    self.entityTable[_entityName]=self.entityTable[_entityName] or {}
+    local tb={}
+    tb.name=_scriptName
+    tb.script=_script
+    --self.entityTable[_entity]=tb
+    table.insert(self.entityTable[_entityName],tb)
+end
+
 function EntityComponentManager:GetEntityScript(_entity,_scriptName)
-    if TableHelper:HasKey(self.entityTable,_entity) then
+    if TableHelper:HasKey(self.entityTable[_entity],_scriptName) then
         return self.entityTable[_entity][_scriptName]
     end
     return nil

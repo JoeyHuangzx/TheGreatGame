@@ -1,12 +1,12 @@
 
 
-local CheeseData=BaseClass('CheeseData')
+local Piece=BaseClass('Piece')
 
-function CheeseData:constructor()
+function Piece:constructor()
     
 end
 
-function CheeseData:OnCreate(_gameObject)
+function Piece:OnCreate(_gameObject)
     self.jgameObject=_gameObject
     self.transform=_gameObject.transform;
 
@@ -18,7 +18,7 @@ function CheeseData:OnCreate(_gameObject)
     end
 end
 
-function CheeseData:Initialize(data)
+function Piece:Initialize(data)
    self.cheeseType=data.cheeseType
    self.topDown=data.topDown
    self.rotationAngle=data.rotationAngle
@@ -27,7 +27,7 @@ function CheeseData:Initialize(data)
    self.isRotation=data.isRotation
 end
 
-function CheeseData:InitMaterialColor()
+function Piece:InitMaterialColor()
     self.currRenderer=self.gameObject.GetComponentInChildred(CS.UnityEngine.MeshRenderer)
     self.currRenderer.shadowCastingMode=CS.UnityEngine.Rendering.ShadowCastingMode.On
     local normalColor=nil
@@ -59,4 +59,4 @@ function CheeseData:InitMaterialColor()
     CS.XLuaUtils.RotationQuaternion(self.transform,self.angleRotation,self.duration)
 end
 
-return CheeseData
+return Piece

@@ -391,6 +391,7 @@
     <None Include="Assets\LuaScripts\Global\Config.lua" />
     <None Include="Assets\_JustJump\jump_lua_scripts\UI\LobbyPanel.lua" />
     <None Include="Assets\EasyTouchBundle\EasyTouchControls\ReleaseNotes.txt" />
+    <None Include="Assets\_JustJump\jump_lua_scripts\GameLogic\Piece.lua" />
     <None Include="Assets\XLua\Examples\03_UIEvent\ButtonInteraction.lua" />
     <None Include="Assets\LuaScripts\_Test\DemoClass.lua" />
     <None Include="Assets\LuaScripts\Global\Util.lua" />
@@ -399,6 +400,7 @@
     <None Include="Assets\_JustJump\jump_lua_scripts\CheeseSpawner.lua" />
     <None Include="Assets\_JustJump\jump_lua_scripts\UI\UIConfig.lua" />
     <None Include="Assets\XLua\Examples\06_Coroutine\Resources\coruntine_test.lua.txt" />
+    <None Include="Assets\_JustJump\jump_lua_scripts\GameLogic\Cheese.lua" />
     <None Include="Assets\_JustJump\jump_lua_scripts\GameLogic\EntityManager.lua" />
     <None Include="Assets\EasyTouchBundle\EasyTouchControls\Documentation\Version 2.0.txt" />
     <None Include="Assets\LuaScripts\Common\MathTool.lua" />
@@ -422,7 +424,6 @@
     <None Include="Assets\_JustJump\jump_lua_scripts\GameLogic\PlayerController.lua" />
     <None Include="Assets\_JustJump\jump_lua_scripts\Common\Helpers\JsonHelper.lua" />
     <None Include="Assets\_JustJump\jump_lua_scripts\Common\Helpers\ColorHelper.lua" />
-    <None Include="Assets\_JustJump\jump_lua_scripts\GameLogic\CheeseBehaviour.lua" />
     <None Include="Assets\LuaScripts\Global\BaseClassDemo.lua" />
     <None Include="Assets\XLua\Resources\perf\profiler.lua.txt" />
     <None Include="Assets\XLua\Examples\10_SignatureLoader\otherfiles\signatured2.lua" />
@@ -436,7 +437,6 @@
     <None Include="Assets\XLua\Resources\perf\memory.lua.txt" />
     <None Include="Assets\EasyTouchBundle\EasyTouch\RealseNotes.txt" />
     <None Include="Assets\_JustJump\jump_lua_scripts\Common\Enum.lua" />
-    <None Include="Assets\_JustJump\jump_lua_scripts\GameLogic\CheeseData.lua" />
     <None Include="Assets\XLua\Examples\10_SignatureLoader\signatured3.lua" />
     <None Include="Assets\LuaScripts\Framework\Common\ResourcesManager.lua" />
     <None Include="Assets\XLua\Examples\10_SignatureLoader\otherfiles\signatured3.lua" />
