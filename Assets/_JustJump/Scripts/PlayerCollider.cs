@@ -17,6 +17,8 @@ public class PlayerCollider : MonoBehaviour
         onCollisionEnter = lua.Global.Get<Action<Collision>>("OnCollisionEnter");
         onCollisionStay = lua.Global.Get<Action<Collision>>("OnCollisionStay");
         onCollisionExit = lua.Global.Get<Action<Collision>>("OnCollisionExit");
+        
+        //transform.GetChild()
     }
 
     // Update is called once per frame

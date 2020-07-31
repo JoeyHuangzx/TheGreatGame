@@ -10,7 +10,7 @@ function PlayerController:OnCreate()
     self.gameObject=GameObjectExtends.CreateObjWithName('Player')
     self.transform=self.gameObject.transform
     self.transform.localScale=Vector3(0.5,0.5,0.5)
-    self.transform.localPosition=Vector3(2.022,1.0,-0.53)
+    self.transform.localPosition=Vector3(2.022,2,-0.53)
     self:Initialize()
 end
 

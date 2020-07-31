@@ -152,14 +152,12 @@ function CheeseSpawner:SpawnCheese(spawnPos, isEnd)
         self.CheeseRotation = Quaternion.identity
     end
     --print(self.levelCheeseMap[a][b],',','pos:',spawnPos,',CheeseRotation:',CheeseRotation,',transform:',self.transform)
-    if self.levelCheeseMap[a][b]==nil then
-       -- print(',a:',a,',b:',b)
-        return
-        else
-            --print(self.levelCheeseMap[a][b],',a:',a,',b:',b)
-    end
+   
     local cheeseInstance = Object.Instantiate(self.levelCheeseMap[a][b], spawnPos, CheeseRotation, self.transform)
-
+    for i = 0, cheeseInstance.transform.childCount-1 do
+        --print('child:...',cheeseInstance.transform:GetChild(i))
+        cheeseInstance.transform:GetChild(i).localPosition=Vector3.zero
+    end
     --[[ if self.diamondCount % 5 == 0 then
         if self.diamondCount == 0 then
             self.diamondCount = self.diamondCount + 1

@@ -39,4 +39,15 @@ function TableHelper:HasVal(tbl, value)
     return false
 end
 
+-- 方便输出查看Key，Value值
+function TableHelper:OutputKV(tbl)
+    if tbl==nil then
+        print('the table is nil')
+        return
+    end
+    for key, value in pairs(tbl) do
+        print('key:',key,',value:',value)
+    end
+end
+
 return TableHelper
