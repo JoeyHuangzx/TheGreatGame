@@ -85,10 +85,6 @@ function CheeseSpawner:Update()
             
             self.SpawnCount = self.SpawnCount + 1
             self:SpawnCheese(self:GetSpawningPosition())
-            print(self.SpawnCount,self.initSpawnCount)
-            if self.SpawnCount==7 then
-                EntityComponentManager:GetInstance():LogTest()
-            end
         else
             self:SpawnCheese(self:GetSpawningPosition(),true)
             print('true..............')

@@ -13,6 +13,10 @@ function Cheese:OnCreate(_gameObject)
     self.didExplode=false
     self.Level=1
     self.playerObj=nil
+
+  --[[   for i = 0, self.transform.childCount-1 do
+        self.transform:GetChild(i).localPosition=Vector3.zero
+    end ]]
 end
 
 function Cheese:OnEnable()

@@ -1,6 +1,7 @@
 Camera = BaseClass('Camera', LuaUpdate)
 
 function Camera:constructor()
+    self.name='Camera'
 end
 
 function Camera:OnCreate()
@@ -17,7 +18,8 @@ end
 
 function Camera:Initialize()
     self.yOffset = 0.89
-    self.initialPos = self.transform.localPosition
+    self.initialPos = Vector3(0,3,-10)
+    self.transform.position=self.initialPos
     self.initialDeltaY = self.target.transform.localPosition.y - self.initialPos.y
     self.minimumPlayerY = 0
     self.spwaner = nil

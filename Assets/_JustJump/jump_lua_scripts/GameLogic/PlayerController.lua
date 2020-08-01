@@ -2,7 +2,7 @@
 local PlayerController=BaseClass('PlayerController',LuaUpdate)
 
 function PlayerController:constructor()
-    
+    self.name='PlayerController'
 end
 
 function PlayerController:OnCreate()
@@ -10,7 +10,7 @@ function PlayerController:OnCreate()
     self.gameObject=GameObjectExtends.CreateObjWithName('Player')
     self.transform=self.gameObject.transform
     self.transform.localScale=Vector3(0.5,0.5,0.5)
-    self.transform.localPosition=Vector3(2.022,2,-0.53)
+    self.transform.localPosition=Vector3(0.25,2,-2.15)
     self:Initialize()
 end
 

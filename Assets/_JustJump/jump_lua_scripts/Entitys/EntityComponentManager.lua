@@ -8,11 +8,17 @@ function EntityComponentManager:Initialize()
     self.EntityScrips={}
     self:CreatePlayer()
     self:CreateCamera()
+    self.timer=0
+    LuaUpdate.EnableUpdate(self,true);
+end
+
+function EntityComponentManager:Update()
+    self.timer=self.timer+LuaUpdate.fixedDeltaTime
 end
 
 function EntityComponentManager:CreatePlayer()
     self.Player=EntityConfig['PlayerController'].New()
-    self:IsValid(self.Player)
+    self:IsValid(self.Player,'player')
     self.Player:OnCreate()
 
     
@@ -20,28 +26,28 @@ end
 
 function EntityComponentManager:CreateCamera()
     self.Camera=EntityConfig['Camera'].New()
-    self:IsValid(self.Camera)
+    self:IsValid(self.Camera,'camera')
     self.Camera:OnCreate()
     self.Camera:SetFollow(self.Player.gameObject)
 end
 
 function EntityComponentManager:CreateCheese(_gameObject)
     local cheese=EntityConfig['Cheese'].New()
-    self:IsValid(cheese)
+    self:IsValid(cheese,'cheese')
     cheese:OnCreate(_gameObject)
-    self:InsertEntity('Cheese',cheese)
-    
+    self:InsertEntity('CheeseObj','Cheese',cheese)
+
+    for i = 0, _gameObject.transform.childCount-1 do
+        local obj=_gameObject.transform:GetChild(i)
+        obj.localPosition=Vector3.zero
+        local piece=EntityConfig['Piece'].New()
+        self.IsValid(piece,'piece'..i)
+        piece:OnCreate(obj.gameObject)
+        self:InsertEntity(obj.name,'Piece',piece)
+    end
+
 end
 
-function EntityComponentManager:LogTest()
-    print('log.......')
-    for key, value in pairs(self.entityTable) do
-        print('entityTB--k:',key,',v:',value)
-        for scriptName,script in pairs(value) do
-            print('name:',scriptName,',script:',script)
-        end
-    end
-end
 
 function EntityComponentManager:InsertEntity(_entityName,_scriptName,_script)
     self.entityTable[_entityName]=self.entityTable[_entityName] or {}
@@ -52,16 +58,20 @@ function EntityComponentManager:InsertEntity(_entityName,_scriptName,_script)
     table.insert(self.entityTable[_entityName],tb)
 end
 
-function EntityComponentManager:GetEntityScript(_entity,_scriptName)
-    if TableHelper:HasKey(self.entityTable[_entity],_scriptName) then
-        return self.entityTable[_entity][_scriptName]
+function EntityComponentManager:GetEntityScript(_entityName,_scriptName)
+    if TableHelper:HasKey(self.entityTable,_entityName) then
+        for key, ScriptList in pairs(self.entityTable[_entityName]) do
+            if ScriptList.name==_scriptName then
+                return ScriptList.script
+            end
+        end
     end
     return nil
 end
 
-function EntityComponentManager:IsValid(target)
+function EntityComponentManager:IsValid(target,name)
     if target ==nil then
-        print('the Camera is null')
+        print('the target is null: ',name)
     end
 end
 

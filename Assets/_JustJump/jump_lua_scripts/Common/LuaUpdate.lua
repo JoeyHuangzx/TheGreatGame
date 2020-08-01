@@ -1,5 +1,5 @@
 LuaUpdate = BaseClass('LuaUpdate')
-LuaUpdate.fixedDeltaTime = 0
+LuaUpdate.fixedDeltaTime = 0.02
 LuaUpdate.UpdateTable = nil
 LuaUpdate.FixedUpdateHandler = nil
 LuaUpdate.LateUpdateHandler = nil

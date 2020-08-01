@@ -11,11 +11,16 @@ function Piece:OnCreate(_gameObject)
     self.transform=_gameObject.transform;
 
     local p=self.transform.position
-    if self.cheeseType==0 then
+   --[[  if self.cheeseType==0 then
         self.transform.localPosition=Vector3(p.x,0.01,p.z)
     else
         self.transform.localPosition=Vector3(p.x,-0.01,p.z)
-    end
+    end ]]
+    LuaUpdate.EnableUpdate(self,true)
+end
+
+function Piece:Update()
+    self.transform:Rotate(Vector3.up, 5);
 end
 
 function Piece:Initialize(data)
