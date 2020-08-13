@@ -69,6 +69,7 @@
     <Compile Include="Assets\_JustJump\Scripts\GameManager.cs" />
     <Compile Include="Assets\_JustJump\Scripts\PlayerCollider.cs" />
     <Compile Include="Assets\_JustJump\Scripts\Sphere.cs" />
+    <Compile Include="Assets\AssetBundles\AssetbundlesManager.cs" />
     <Compile Include="Assets\EasyTouchBundle\EasyTouch\Examples\4.X\AdvancedExamples\AutoSelect\MultiLayerTouch.cs" />
     <Compile Include="Assets\EasyTouchBundle\EasyTouch\Examples\4.X\AdvancedExamples\AutoSelect\MultiLayerUI.cs" />
     <Compile Include="Assets\EasyTouchBundle\EasyTouch\Examples\4.X\AdvancedExamples\MultiCamera\MultiCameraTouch.cs" />

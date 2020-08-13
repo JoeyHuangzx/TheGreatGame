@@ -20,7 +20,7 @@ function Piece:OnCreate(_gameObject)
 end
 
 function Piece:Update()
-    self.transform:Rotate(Vector3.up, 5);
+    
 end
 
 function Piece:Initialize(data)
