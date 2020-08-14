@@ -364,7 +364,32 @@ namespace FileUtility
             }
             return false;
         }
-        
+
+        /// <summary>
+        /// 移动文件，修改名称
+        /// </summary>
+        /// <returns></returns>
+        public static bool CopyByName(string dirPath, string srcName)
+        {
+            try
+            {
+                string srcFilePath = dirPath; //Path.Combine(dirPath, srcName);
+                string destFilePath = srcName;// Path.Combine(dirPath, destName);
+                if (!File.Exists(srcFilePath))
+                {
+                    return false;
+                }
+                //DeleteFile(destFilePath);
+                File.Copy(srcFilePath, destFilePath);
+                return true;
+            }
+            catch (System.Exception ex)
+            {
+                Log.Info(ex.Message);
+            }
+            return false;
+        }
+
         /// <summary>
         /// 删除文件
         /// </summary>
@@ -419,6 +444,42 @@ namespace FileUtility
                 }
             }
             return list;
+        }
+
+        public static string[] GetSpecifyFilesInFolder(string path, string[] extensions, bool exclude = false)
+        {
+            if (string.IsNullOrEmpty(path))
+            {
+                return null;
+            }
+            List<string> paths= Directory.GetFiles(path, "*.*", SearchOption.AllDirectories).ToList();
+            List<string> newList = new List<string>();
+            for (int i = 0; i < extensions.Length; i++)
+            {
+                var lists = paths.FindAll(o => Path.GetExtension(o) == extensions[i]);
+                UnityEngine.Debug.Log(lists.Count);
+                newList=newList.Concat(lists).ToList();
+            }
+            return newList.ToArray();
+            if (extensions == null)
+            {
+                return Directory.GetFiles(path, "*.*", SearchOption.AllDirectories);
+            }
+            else if (exclude)
+            {
+                return Directory.GetFiles(path, "*.*", SearchOption.AllDirectories)
+                    .Where(f => !extensions.Contains(GetFileExtension(f))).ToArray();
+            }
+            else
+            {
+                return Directory.GetFiles(path, "*.*", SearchOption.AllDirectories)
+                    .Where(f => extensions.Contains(GetFileExtension(f))).ToArray();
+            }
+        }
+
+        public static string GetFileExtension(string path)
+        {
+            return Path.GetExtension(path).ToLower();
         }
 
         /// <summary>

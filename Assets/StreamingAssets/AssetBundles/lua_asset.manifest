@@ -1,0 +1,52 @@
+ManifestFileVersion: 0
+CRC: 4028100095
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 7d4f353169bccbd9e69d11371118128f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/AssetsPackage/Lua/LuaGameEntry.lua.bytes
+- Assets/AssetsPackage/Lua/UI/GameOverPanel.lua.bytes
+- Assets/AssetsPackage/Lua/Common/CSharpNameSpace.lua.bytes
+- Assets/AssetsPackage/Lua/Common/JumpGlobal.lua.bytes
+- Assets/AssetsPackage/Lua/GameLogic/PlayerController.lua.bytes
+- Assets/AssetsPackage/Lua/CheeseSpawner.lua.bytes
+- Assets/AssetsPackage/Lua/GameLogic/Ball.lua.bytes
+- Assets/AssetsPackage/Lua/UI/UIManager.lua.bytes
+- Assets/AssetsPackage/Lua/Common/Helpers/TableHelper.lua.bytes
+- Assets/AssetsPackage/Lua/GameLogic/Camera.lua.bytes
+- Assets/AssetsPackage/Lua/Common/LuaUpdate.lua.bytes
+- Assets/AssetsPackage/Lua/GameLogic/EntityConfig.lua.bytes
+- Assets/AssetsPackage/Lua/Common/Extends/GameObjectExtends.lua.bytes
+- Assets/AssetsPackage/Lua/GameLogic/Cheese.lua.bytes
+- Assets/AssetsPackage/Lua/GameLogic/BaseEntity.lua.bytes
+- Assets/AssetsPackage/Lua/Entitys/EntityComponentManager.lua.bytes
+- Assets/AssetsPackage/Lua/Common/LevelController.lua.bytes
+- Assets/AssetsPackage/Lua/Common/Helpers/StringHelper.lua.bytes
+- Assets/AssetsPackage/Lua/Common/ResourcesManager.lua.bytes
+- Assets/AssetsPackage/Lua/JumpGameController.lua.bytes
+- Assets/AssetsPackage/Lua/GameLogic/EntityManager.lua.bytes
+- Assets/AssetsPackage/Lua/CodeVerify.lua.bytes
+- Assets/AssetsPackage/Lua/Common/Helpers/ColorHelper.lua.bytes
+- Assets/AssetsPackage/Lua/Common/Helpers/ColliderAndTriggerFun.lua.bytes
+- Assets/AssetsPackage/Lua/UI/BaseComponent.lua.bytes
+- Assets/AssetsPackage/Lua/Common/Singleton.lua.bytes
+- Assets/AssetsPackage/Lua/Common/BaseClass.lua.bytes
+- Assets/AssetsPackage/Lua/GameLogic/JumpBehaviour.lua.bytes
+- Assets/AssetsPackage/Lua/GameLogic/Piece.lua.bytes
+- Assets/AssetsPackage/Lua/GameLogic/Board.lua.bytes
+- Assets/AssetsPackage/Lua/UI/LobbyPanel.lua.bytes
+- Assets/AssetsPackage/Lua/Common/Enum.lua.bytes
+- Assets/AssetsPackage/Lua/Common/Helpers/JsonHelper.lua.bytes
+- Assets/AssetsPackage/Lua/Common/Helpers/ObjectUtil.lua.bytes
+- Assets/AssetsPackage/Lua/UI/UIConfig.lua.bytes
+- Assets/AssetsPackage/Lua/Common/EventMessager.lua.bytes
+- Assets/AssetsPackage/Lua/UI/GamePanel.lua.bytes
+Dependencies: []

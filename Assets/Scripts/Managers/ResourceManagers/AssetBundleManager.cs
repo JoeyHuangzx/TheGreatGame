@@ -5,9 +5,8 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
 
-/// <summary>
-/// 
-/// </summary>
+
+
 public class AssetBundleManager:MonoBehaviour
 {
 
@@ -19,13 +18,13 @@ public class AssetBundleManager:MonoBehaviour
     void Start()
     {
         //LoadAsseFromAsset(LoadComplete);
-        //StartCoroutine(LoadAsset());
+        StartCoroutine(LoadAsset());
     }
 
     private IEnumerator LoadAsset()
     {
-        //yield return LoadAssetWithUnityWebRequest(LoadComplete);
-        yield return LoadAssetFromMemoryAsync(LoadComplete);
+        yield return LoadAssetWithUnityWebRequest(LoadComplete);
+        //yield return LoadAssetFromMemoryAsync(LoadComplete);
         //yield return LoadAssetWithWWW(LoadComplete);
         
     }
@@ -97,8 +96,14 @@ public class AssetBundleManager:MonoBehaviour
         UnityWebRequest request = UnityWebRequestAssetBundle.GetAssetBundle(_assetPath);
         yield return request.SendWebRequest();
         AssetBundle ab = DownloadHandlerAssetBundle.GetContent(request);
-        AssetBundleManifest manifest = ab.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
-        string[] _assetNames = manifest.GetAllAssetBundles();
+       // manifest = ab.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
+        string[] abs=ab.GetAllAssetNames();
+        for (int i = 0; i < abs.Length; i++)
+        {
+            Debug.Log(abs[i]);
+        }
+       // string[] _assetNames = manifest.GetAllAssetBundles();
+        //LogAllAssetDepned(_assetNames);
         if (_callback != null)
             _callback();
     }
@@ -119,7 +124,7 @@ public class AssetBundleManager:MonoBehaviour
 
     private void LogAllAssetDepned(string[] _assetNames)
     {
-       
+        Debug.Log("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
         for (int i = 0; i < _assetNames.Length; i++)
         {
             Debug.Log(string.Format("---Asset name: {0}", _assetNames[i]));
@@ -130,6 +135,7 @@ public class AssetBundleManager:MonoBehaviour
                 Debug.Log(string.Format("---depends name: {0}", dependencies[j]));
             }
         }
+        Debug.Log("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
     }
 	
 

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Collections;
+using UnityEngine.Networking;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -78,6 +80,7 @@ namespace Game.AssetBundles
         {
             get
             {
+                return true;
 #if UNITY_EDITOR
                 if (mSimulateAssetBundleInEditor == -1)
                     mSimulateAssetBundleInEditor = EditorPrefs.GetBool(K_SIMULATE_ASSETBUNDLES, true) ? 1 : 0;
@@ -118,10 +121,10 @@ namespace Game.AssetBundles
             var go = new GameObject("AssetBundleManager",typeof(AssetsBundleManager));
             //go.AddComponent<AssetsBundleManager>();
             UnityEngine.Object.DontDestroyOnLoad(go);
-            if(Application.platform==RuntimePlatform.WindowsEditor)
-            {
-                if (SimulateAssetBundleInEditor) return null;
-            }
+            //if(Application.platform==RuntimePlatform.WindowsEditor)
+            //{
+            //    if (SimulateAssetBundleInEditor) return null;
+            //}
             LoadAssetBundle(_manifestAssetBundleName, true);
             var operation = new AssetBundleMaifestOperation(_manifestAssetBundleName, "AssetBundleManifest", typeof(AssetBundleManifest));
             //Debug.Log(string.Format("{0},{1}", mAssetBundleManifest, mAssetBundleManifest.name));
@@ -250,20 +253,31 @@ namespace Game.AssetBundles
             }
             else
             {
-                WWW download = null;
+
+                UnityWebRequest rq = null;
+                //WWW download = null;
                 if (!assetBaseDownloadingURL.EndsWith("/"))
                     assetBaseDownloadingURL += "/";
                 string url = assetBaseDownloadingURL + _assetbundleName;
                 //对于manifest assetbundle，总是下载它，因为我们没有哈希值。
-                if (_isLoadingManifest)
-                    download = new WWW(url);
-                else
-                    download = WWW.LoadFromCacheOrDownload(url, mAssetBundleManifest.GetAssetBundleHash(_assetbundleName), 0);
+                rq = UnityWebRequest.Get(url);
+                //if (_isLoadingManifest)
+                
+                //else
+                //    rq = // WWW.LoadFromCacheOrDownload(url, mAssetBundleManifest.GetAssetBundleHash(_assetbundleName), 0);
 
-                mProgressOperations.Add(new AssetBundleFromWeb(_assetbundleName,download));
+               // mProgressOperations.Add(new AssetBundleFromWeb(_assetbundleName,download));
             }
             mDownloadingBundles.Add(_assetbundleName);
             return false;
+        }
+
+        public IEnumerator InstantiateGameObjectAsync(string assetBundleName,string assetName)
+        {
+            
+            AssetBundleAssetOperation request =(AssetBundleAssetOperation)LoadAssetAsync(assetBundleName, assetName, typeof(GameObject));
+            if (request==null) yield break;
+            yield return StartCoroutine(request);
         }
 
         void Update()

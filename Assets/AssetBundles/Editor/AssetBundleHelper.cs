@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.IO;
+using FileUtility;
 
 public class AssetBundleHelper : Editor
 {
@@ -11,7 +12,7 @@ public class AssetBundleHelper : Editor
     public static void SetAssetBundleNames()
     {
         Object[] selectAssets = Selection.GetFiltered(typeof(Object), SelectionMode.Assets | SelectionMode.ExcludePrefab);
-        string[] fileSuffixName = new string[] {".prefab",".mat",".shader",".lua"};
+        string[] fileSuffixName = new string[] {".prefab",".mat",".shader",".bytes",".jpg",".png"};
         if (selectAssets.Length != 1) return;
         string fullPath = AssetBundleConfig.PROJECT_PATH + AssetDatabase.GetAssetPath(selectAssets[0]);
         AssetImporter assetImporter = null;
@@ -41,4 +42,38 @@ public class AssetBundleHelper : Editor
             }
         }
     }
+
+    [MenuItem("Tools/AssetBundles/BuildAssetBundles")]
+    public static void BuildAllAssetBundles()
+    {
+        string assetBundleDirectory = "Assets/AssetsPackage/AssetBundles";
+        if (!Directory.Exists(assetBundleDirectory))
+        {
+            Directory.CreateDirectory(assetBundleDirectory);
+        }
+        BuildPipeline.BuildAssetBundles(assetBundleDirectory,BuildAssetBundleOptions.None,BuildTarget.StandaloneWindows);
+    }
+
+    [MenuItem("Tools/xLua/CopyAndChangeLuaFileName")]
+    public static void CopyAndChangeLuaFileName()
+    {
+        string desPath =Application.dataPath+"/AssetsPackage/Lua";
+        if (Directory.Exists(desPath))
+        {
+            Directory.Delete(desPath);
+        }
+        string selectPath = Application.dataPath + "/_JustJump/jump_lua_scripts";
+        
+        Debug.Log(desPath+","+selectPath);
+        FileUtil.CopyFileOrDirectoryFollowSymlinks(selectPath, desPath);
+        string[] luaFiles = FileManager.GetSpecifyFilesInFolder(desPath, new string[] { ".lua"}, false);
+        //Debug.Log(luaFiles.Length);
+        for (int i = 0; i < luaFiles.Length; i++)
+        {
+            string old = luaFiles[i];
+            string _new = old + ".bytes";
+            File.Move(old, _new);
+        }
+    }
+
 }
