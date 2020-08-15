@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_JustJump/Splash.unity
+    guid: 662cfd7c91ce6cb4cb2fd40c605c3a07
+  - enabled: 1
+    path: Assets/_JustJump/Jump.unity
+    guid: 93c733acb233eb041a61072932daee9d
+  - enabled: 1
     path: Assets/Scenes/Init.unity
     guid: 21b83d7c598b8fd4e9a53e3ffdca29f0
   - enabled: 1

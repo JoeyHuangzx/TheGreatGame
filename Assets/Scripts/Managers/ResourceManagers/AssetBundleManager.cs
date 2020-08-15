@@ -4,16 +4,20 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
-
-
-public class AssetBundleManager:MonoBehaviour
+public class AssetBundleManager:MonoSingleton<AssetBundleManager>
 {
 
     private static AssetBundleManifest manifest = null;
     private static Dictionary<string, AssetBundle> PathToAssetBundles = new Dictionary<string, AssetBundle>();
+    private Dictionary<string, TextAsset> assetCaches = new Dictionary<string, TextAsset>();
     private Action _callback;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
 
     void Start()
     {
@@ -31,7 +35,7 @@ public class AssetBundleManager:MonoBehaviour
 
     private void LoadComplete()
     {
-        
+        SceneManager.LoadScene("Jump");
     }
 
     /// <summary>
@@ -100,12 +104,23 @@ public class AssetBundleManager:MonoBehaviour
         string[] abs=ab.GetAllAssetNames();
         for (int i = 0; i < abs.Length; i++)
         {
-            Debug.Log(abs[i]);
+            TextAsset ta = ab.LoadAsset<TextAsset>(abs[i]);
+            assetCaches.Add(abs[i], ta);
+            //assetCaches.Add()
+            //Debug.Log(ta.name+","+abs[i]);
         }
-       // string[] _assetNames = manifest.GetAllAssetBundles();
-        //LogAllAssetDepned(_assetNames);
         if (_callback != null)
             _callback();
+    }
+
+    public byte[] GetAsset(string _assetName)
+    {
+        TextAsset ta = null;
+        if(assetCaches.TryGetValue(_assetName,out ta))
+        {
+            return ta.bytes;
+        }
+        return null;
     }
 
     private IEnumerator LoadAssetWithWWW(Action _callback)
