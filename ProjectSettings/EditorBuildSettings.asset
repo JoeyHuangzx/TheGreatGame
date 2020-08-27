@@ -11,13 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_JustJump/Jump.unity
     guid: 93c733acb233eb041a61072932daee9d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Init.unity
     guid: 21b83d7c598b8fd4e9a53e3ffdca29f0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Login.unity
     guid: b9328e6ea0e450146a0d3098c84bb7f6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Game.unity
     guid: 3e144c9a7d860f9468722924ced0da1d
   m_configObjects: {}
