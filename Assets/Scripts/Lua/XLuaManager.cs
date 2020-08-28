@@ -60,17 +60,18 @@ public class XLuaManager : MonoSingleton<XLuaManager>
     {
         string _scriptPath = string.Empty;
         _filePath = _filePath.Replace(".", "/") + ".lua";
-        //Debug.Log("filePath:......."+_filePath);
-        string scriptPath = "Assets/AssetsPackage/Lua/" + _filePath + ".bytes";
-        byte[] asset = AssetBundleManager.GetInstance().GetAsset(scriptPath.ToLower());
-        return asset;
-        Debug.Log(asset);
         if (Application.platform == RuntimePlatform.WindowsEditor)
         {
             _scriptPath = Path.Combine(Application.dataPath, luaScriptsFolder);
             _scriptPath = Path.Combine(_scriptPath, _filePath);
             byte[] _bytes = FileManager.SafeReadAllBytes(_scriptPath);
             return _bytes;
+        }
+        else if(Application.platform==RuntimePlatform.Android)
+        {
+            string scriptPath = "Assets/AssetsPackage/Lua/" + _filePath + ".bytes";
+            byte[] asset = AssetBundleManager.GetInstance().GetAsset(scriptPath.ToLower());
+            return asset;
         }
 
         return null;
@@ -153,6 +154,7 @@ public class XLuaManager : MonoSingleton<XLuaManager>
         _scriptPath = Path.Combine(Application.dataPath, luaScriptsFolder);
         _scriptPath = Path.Combine(_scriptPath, _filePath);
         string str = FileManager.GetFileContent(_scriptPath);
+
        // Debug.Log("LuaScript " + str);
         return str;
     }

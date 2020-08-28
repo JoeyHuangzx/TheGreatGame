@@ -36,19 +36,24 @@ function CheeseSpawner:Initialize()
 
     self.levelStr =
         '1,1,2,1,1,2,1,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,2,1,2,2,1,2,2,1,2,2,1,2,2,1,2,2,1,2,2,1,2,2,1,2,2,1,2,3,1,2,2,1,2,3,1,2,2,1,2,3,1,2,2,1,2,3,1,2,3,2,2,3,1,2,3,2,2,3,1,2,3,2,2,3,1,2,3,2,2,3'
-
+    self.prefabData='["100","101","102","103","104","105","106","107","108","201","202","203","204","205","206","207","208","209","210","211","212","213","214","215","216","217","301","302","303","304","305","306","307","308","309","310","311","312","313","314","315","316","317","318","319","320"]'
     self:InitData()
 end
-
+--
 function CheeseSpawner:InitData()
     self.CurrEnemyCheeseColor = self.EnemyCheeseColors[1]
     self.CurrNormalCheeseColor = self.NormalCheeseColors[1]
-
+    local prefabNameJsons=ResourcesManager.Load('CheesePrefab'):ToString()
+    local prefabNames=CS.XLuaUtils.GetCheesePrefabNames(prefabNameJsons);
+  --[[   print('prefab name:',prefabNames)
+    for i = 0, prefabNames.Length-1 do
+        print('i:',i,',name:',prefabNames[i])
+    end ]]
     -- 把resources的cheese资源加载到数组
     local objNames = CS.XLuaUtils.GetObjectNameWithFile('Assets/_JustJump/Resources/Cheeses')
 
-    for i = 0, objNames.Length - 1 do
-        local obj = ResourcesManager.Load('Cheeses/' .. objNames[i])
+    for i = 0, prefabNames.Length - 1 do
+        local obj = ResourcesManager.Load('Cheeses/' .. prefabNames[i])
         table.insert(self.serialObj, obj)
         -- print(self.serialObj[i+1])
     end

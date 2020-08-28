@@ -390,6 +390,7 @@
     <None Include="Assets\XLua\Examples\07_AsyncTest\Resources\async_test.lua.txt" />
     <None Include="Assets\XLua\Tutorial\LoadLuaScript\ByFile\Resources\byfile.lua.txt" />
     <None Include="Assets\LuaScripts\Global\Config.lua" />
+    <None Include="Assets\CheesePrefab.txt" />
     <None Include="Assets\_JustJump\jump_lua_scripts\UI\LobbyPanel.lua" />
     <None Include="Assets\EasyTouchBundle\EasyTouchControls\ReleaseNotes.txt" />
     <None Include="Assets\_JustJump\jump_lua_scripts\GameLogic\Piece.lua" />
@@ -405,10 +406,10 @@
     <None Include="Assets\_JustJump\jump_lua_scripts\GameLogic\EntityManager.lua" />
     <None Include="Assets\EasyTouchBundle\EasyTouchControls\Documentation\Version 2.0.txt" />
     <None Include="Assets\LuaScripts\Common\MathTool.lua" />
+    <None Include="Assets\_JustJump\Resources\CheesePrefab.txt" />
     <None Include="Assets\_JustJump\jump_lua_scripts\GameLogic\Camera.lua" />
     <None Include="Assets\XLua\Resources\xlua\util.lua.txt" />
     <None Include="Assets\_JustJump\jump_lua_scripts\GameLogic\Board.lua" />
-    <None Include="Assets\XLua\Gen\Resources\hotfix_id_map.lua.txt" />
     <None Include="Assets\EasyTouchBundle\EasyTouch\_Documentation\How to migrate from EasyTouch 4.X.txt" />
     <None Include="Assets\_JustJump\jump_lua_scripts\Common\Singleton.lua" />
     <None Include="Assets\XLua\LuaStudy.lua" />

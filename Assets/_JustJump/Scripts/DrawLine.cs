@@ -7,7 +7,8 @@ public class DrawLine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      //  transform.Rotate(Vector3.up, 10);
+        //  transform.Rotate(Vector3.up, 10);
+        gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.one;
     }
 
     // Update is called once per frame

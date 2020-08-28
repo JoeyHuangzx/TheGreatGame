@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FileUtility;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -21,6 +22,8 @@ public class AssetBundleManager:MonoSingleton<AssetBundleManager>
 
     void Start()
     {
+        //string[] strs = XLuaUtils.GetObjectNameWithFile("Assets/_JustJump/Resources/Cheeses");
+        //FileManager.WriteToTxt(JsonHelper.Serialize(strs),Application.dataPath+"/CheesePrefab.txt", true);
         //LoadAsseFromAsset(LoadComplete);
         StartCoroutine(LoadAsset());
     }

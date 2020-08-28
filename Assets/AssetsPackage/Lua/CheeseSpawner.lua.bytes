@@ -43,7 +43,9 @@ end
 function CheeseSpawner:InitData()
     self.CurrEnemyCheeseColor = self.EnemyCheeseColors[1]
     self.CurrNormalCheeseColor = self.NormalCheeseColors[1]
-
+    print('====================================================')
+    local prefabNames=ResourcesManager.Load('CheesePrefab')
+    print('prefab name:',prefabNames)
     -- 把resources的cheese资源加载到数组
     local objNames = CS.XLuaUtils.GetObjectNameWithFile('Assets/_JustJump/Resources/Cheeses')
 

@@ -37,7 +37,7 @@ function PlayerController:Initialize()
    -- self.meshRenderer=self.gameObject:GetComponent(typeof(CS.UnityEngine.MeshRenderer))
    -- self:RandomMat()
     --self.initialPosition=self.transform.position
-    self.gameObject:GetComponent(typeof(CS.UnityEngine.Rigidbody)).angularVelocity=1 -- CS.UnityEngine.Random.Range(0,len)
+    self.gameObject:GetComponent(typeof(CS.UnityEngine.Rigidbody)).angularVelocity=Vector3(0,1,0) -- CS.UnityEngine.Random.Range(0,len)
 end
 
 function PlayerController:Resurrection(arg1, arg2, arg3)

@@ -51,7 +51,7 @@ public class AssetBundleHelper : Editor
         {
             Directory.CreateDirectory(assetBundleDirectory);
         }
-        BuildPipeline.BuildAssetBundles(assetBundleDirectory,BuildAssetBundleOptions.None,BuildTarget.StandaloneWindows);
+        BuildPipeline.BuildAssetBundles(assetBundleDirectory,BuildAssetBundleOptions.None,BuildTarget.Android);
     }
 
     [MenuItem("Tools/xLua/CopyAndChangeLuaFileName")]
@@ -60,7 +60,7 @@ public class AssetBundleHelper : Editor
         string desPath =Application.dataPath+"/AssetsPackage/Lua";
         if (Directory.Exists(desPath))
         {
-            Directory.Delete(desPath);
+            Directory.Delete(desPath,true);
         }
         string selectPath = Application.dataPath + "/_JustJump/jump_lua_scripts";
         

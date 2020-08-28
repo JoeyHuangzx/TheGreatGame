@@ -77,6 +77,12 @@ public class XLuaUtils
         return arr.ToArray();
         
     }
+
+    public static string[] GetCheesePrefabNames(string _json)
+    {
+        List<string> strs = JsonHelper.DeserializeToList<string>(_json);
+        return strs.ToArray();
+    }
 }
 
 [LuaCallCSharp]

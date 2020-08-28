@@ -5,7 +5,7 @@ using UnityEngine;
 public class AssetBundleConfig 
 {
     //AssetBundle打包路径
-    public static string ASSETBUNDLE_PATH = Application.dataPath + "/StreamingAssets/AssetBundles/";
+    public static string ASSETBUNDLE_PATH = Application.streamingAssetsPath + "/AssetBundles/";
 
     public static string ASSETBUNDLE_STREAMINGASSET_PATH = "file://"+Application.streamingAssetsPath + "/AssetBundles/";
 
